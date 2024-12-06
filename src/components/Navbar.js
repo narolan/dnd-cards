@@ -8,7 +8,8 @@ import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
     const navigate = useNavigate();
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function(e) {
+        e.preventDefault();
         navigate("/");
     }
     return(
