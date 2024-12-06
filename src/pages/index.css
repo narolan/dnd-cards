@@ -15,9 +15,32 @@
     margin: 2px 1rem;
 }
 
-.log-in {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.text-not-found {
+    font-size: 20px;
+}
+
+.text-grid {
+    margin: 5px 0;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.beasts {
+    width: 60vw;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.beasts-uneven {
+    background-color: #f1e688;
+}
+
+.beasts-header {
+    border-bottom: 3px solid #86211b;
 }
