@@ -1,0 +1,5 @@
+.form-data-field {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5px 0;
+}

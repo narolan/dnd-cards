@@ -8,6 +8,7 @@ import {
 import Home from "./pages/Home";
 import Beasts from "./pages/Beasts";
 import Spells from "./pages/Spells";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
