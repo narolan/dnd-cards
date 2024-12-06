@@ -7,7 +7,6 @@ export const Nav = styled.nav`
     height: 50px;
     display: flex;
     justify-content: space-between;
-    //padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
 `;
 
@@ -47,21 +46,12 @@ export const NavMenu = styled.div`
     display: flex;
     align-items: center;
     margin-right: -24px;
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
 `;
 
 export const NavBtn = styled.nav`
     display: flex;
     align-items: center;
     margin-right: 24px;
-    /* Third Nav */
-    /* justify-content: flex-end;
-  width: 100vw; */
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
 `;
 
 export const NavBtnLink = styled(Link)`
