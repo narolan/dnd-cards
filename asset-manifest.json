@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dnd-cards/static/css/main.86da22aa.css",
+    "main.css": "/dnd-cards/static/css/main.d20729f3.css",
     "main.js": "/dnd-cards/static/js/main.f0fbfc0b.js",
     "static/js/453.3cc2f6a9.chunk.js": "/dnd-cards/static/js/453.3cc2f6a9.chunk.js",
     "index.html": "/dnd-cards/index.html",
-    "main.86da22aa.css.map": "/dnd-cards/static/css/main.86da22aa.css.map",
+    "main.d20729f3.css.map": "/dnd-cards/static/css/main.d20729f3.css.map",
     "main.f0fbfc0b.js.map": "/dnd-cards/static/js/main.f0fbfc0b.js.map",
     "453.3cc2f6a9.chunk.js.map": "/dnd-cards/static/js/453.3cc2f6a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86da22aa.css",
+    "static/css/main.d20729f3.css",
     "static/js/main.f0fbfc0b.js"
   ]
 }
