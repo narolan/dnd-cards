@@ -57,6 +57,12 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+@media (max-width: 1000px) {
+    .form-data {
+        grid-template-columns: 1fr;
+    }
+}
+
 .form-button {
     width: 30%;
     margin: 0 auto;
