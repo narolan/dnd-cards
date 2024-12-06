@@ -5,7 +5,6 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import { useState } from 'react'
 import Home from "./pages/Home";
 import Beasts from "./pages/Beasts";
 import Spells from "./pages/Spells";
@@ -17,6 +16,9 @@ function App() {
       <Routes>
         <Route
           path="/"
+          element={<Home />} />
+        <Route
+          path="/dnd-cards"
           element={<Home />} />
         <Route
          path="/beasts"
