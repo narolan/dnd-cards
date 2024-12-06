@@ -2,20 +2,12 @@ import React from "react";
 import {
     Nav,
     NavLink,
-    Bars,
     NavMenu,
 } from "./NavbarElements";
 
-const Navbar = (props) => {
-    const {loggedIn, setLoggedIn} = props;
-
-    const logOut = () => {
-        setLoggedIn(false);
-    }
-
+const Navbar = () => {
     return(
         <Nav>
-            <Bars />
             <NavMenu>
                 <NavLink to="/" >
                     Home

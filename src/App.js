@@ -11,13 +11,9 @@ import Beasts from "./pages/Beasts";
 import Spells from "./pages/Spells";
 
 function App() {
-
-    const [loggedIn, setLoggedIn] = useState(false);
-
-
   return (
     <Router>
-      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+      <Navbar/>
       <Routes>
         <Route
           path="/"
