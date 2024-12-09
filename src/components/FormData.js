@@ -5,7 +5,7 @@ const FormData = (props) => {
     return (
         <div className="form-data-field">
             <label htmlFor={props.name}>{props.label}</label>
-            <input id={props.name} name={props.name}/>
+            <input id={props.name} name={props.name} value={props.value} onChange={props.action}/>
         </div>
     )
 }
