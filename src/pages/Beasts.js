@@ -143,7 +143,7 @@ const Beasts = () => {
         localStorage.setItem('beasts', JSON.stringify([...beasts, {
             id: uuid.v4(),
             name: name,
-            description: meta,
+            meta: meta,
             armor_class: armor_class,
             hp: hp,
             speed: speed,
