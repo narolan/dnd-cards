@@ -1,11 +1,12 @@
 import React from "react";
+import Form from "react-bootstrap/Form";
 import './index.css';
 
 const FormData = (props) => {
     return (
         <div className="form-data-field">
-            <label htmlFor={props.name}>{props.label}</label>
-            <input id={props.name} name={props.name} value={props.value} onChange={props.action}/>
+            <Form.Label htmlFor={props.name}>{props.label}</Form.Label>
+            <Form.Control id={props.name} type="text" name={props.name} value={props.value} onChange={props.action}/>
         </div>
     )
 }

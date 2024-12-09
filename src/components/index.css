@@ -3,3 +3,15 @@
     grid-template-columns: 1fr 2fr;
     padding: 5px 0;
 }
+
+.form {
+    width: 50vw;
+    margin: 1rem auto;
+}
+
+@media (max-width: 1000px) {
+    .form {
+        width: 90vw;
+        margin: 1rem auto;
+    }
+}
