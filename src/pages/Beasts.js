@@ -222,8 +222,8 @@ const Beasts = () => {
                             <div key={beast.id} className={index % 2 === 1 ? "beasts beasts-uneven" : "beasts"}>
                                 <img width="50" height="50" alt="N/A"
                                      src={beast.img_url}/>
-                                <p className="text-grid text-italic">{beast.name}</p>
-                                <p className="text-grid">{beast.meta}</p>
+                                <p title={beast.name} className="text-grid text-italic">{beast.name}</p>
+                                <p title={beast.meta} className="text-grid">{beast.meta}</p>
                                 <Button className="button-small"
                                         variant="outline-danger"
                                         onClick={() => removeBeast(beast.id)}>
