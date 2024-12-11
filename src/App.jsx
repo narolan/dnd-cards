@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from "./components/Navbar.jsx";
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Routes,
     Route,
 } from "react-router-dom";
