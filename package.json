@@ -24,9 +24,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "npm version patch && gh-pages -d build",
-    "deploy-no-bump": "gh-pages -d build",
+    "predeploy": "npm version patch && npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "vite test",
     "eject": "vite eject",
     "preview": "vite preview"
