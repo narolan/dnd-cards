@@ -6,8 +6,8 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Beasts from "./pages/Beasts.jsx";
-import Spells from "./pages/Spells.jsx";
+import Beasts from "./pages/beasts/Beasts.jsx";
+import Spells from "./pages/spells/Spells.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import version from "../package.json";
 
