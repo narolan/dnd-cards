@@ -4,14 +4,8 @@ import {
     NavLink,
     NavMenu,
 } from "./NavbarElements.jsx";
-import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    window.onbeforeunload = function(e) {
-        e.preventDefault();
-        navigate("/");
-    }
 
     const BASE_URL = import.meta.env.BASE_URL;
 
