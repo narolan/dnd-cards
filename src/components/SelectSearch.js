@@ -17,8 +17,16 @@ export default function SelectSearch(props) {
         },
     };
 
-    const onMenuOpen = () => setIsMenuOpen(true);
-    const onMenuClose = () => setIsMenuOpen(false);
+    const onMenuOpen = () => {
+        if (!isMenuOpen) {
+            setIsMenuOpen(true);
+        }
+    }
+    const onMenuClose = () => {
+        if (isMenuOpen) {
+            setIsMenuOpen(false);
+        }
+    }
 
     return (
         <form className="form">
