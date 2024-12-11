@@ -26,6 +26,7 @@
     "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "npm version patch && gh-pages -d build",
+    "deploy-no-bump": "gh-pages -d build",
     "test": "vite test",
     "eject": "vite eject",
     "preview": "vite preview"
