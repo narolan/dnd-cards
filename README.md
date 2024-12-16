@@ -1,6 +1,6 @@
 # dnd-cards
 
-Welcome to DnD Cards! The purpose of this application is to provide you the ability to create your own cards for spells, beasts and maybe more to come. 
+Welcome to DnD Cards, the purpose of this application is to provide you the ability to create your own cards for spells, monsters and maybe more to come. 
 
 ## Demo
 
