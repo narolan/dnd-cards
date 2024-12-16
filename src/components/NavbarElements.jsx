@@ -6,6 +6,8 @@ export const Nav = styled.nav`
     background: #86211b;
     height: 50px;
     display: flex;
+    position: sticky;
+    top: 0;
     justify-content: space-between;
     z-index: 12;
 `;
