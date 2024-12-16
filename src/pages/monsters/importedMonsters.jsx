@@ -1,4 +1,4 @@
-export const importedBeasts = [
+export const importedMonsters = [
   {
     "name": "Aboleth",
     "meta": "Large aberration, lawful evil",

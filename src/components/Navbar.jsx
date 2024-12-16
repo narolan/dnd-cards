@@ -15,8 +15,8 @@ const Navbar = () => {
                 <NavLink to="/" className="home">
                     <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
                 </NavLink>
-                <NavLink to="/beasts">
-                    Beasts
+                <NavLink to="/monsters">
+                    Monsters
                 </NavLink>
                 <NavLink to="/spells">
                     Spells

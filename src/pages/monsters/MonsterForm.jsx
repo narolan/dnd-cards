@@ -3,34 +3,34 @@ import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
 
-const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) => {
+const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleClose}) => {
 
-    const [name, setName] = useState(!!beast ? beast.name : "");
-    const [meta, setMeta] = useState(!!beast ? beast.meta : "");
-    const [armor_class, setArmorClass] = useState(!!beast ? beast.armor_class : "");
-    const [hp, setHp] = useState(!!beast ? beast.hp : "");
-    const [speed, setSpeed] = useState(!!beast ? beast.speed : "");
-    const [strength, setStrength] = useState(!!beast ? beast.strength : "");
-    const [strength_mod, setStrengthMod] = useState(!!beast ? beast.strength_mod : "");
-    const [dexterity, setDexterity] = useState(!!beast ? beast.dexterity : "");
-    const [dexterity_mod, setDexterityMod] = useState(!!beast ? beast.dexterity_mod : "");
-    const [constitution, setConstitution] = useState(!!beast ? beast.constitution : "");
-    const [constitution_mod, setConstitutionMod] = useState(!!beast ? beast.constitution_mod : "");
-    const [intelligence, setIntelligence] = useState(!!beast ? beast.intelligence : "");
-    const [intelligence_mod, setIntelligenceMod] = useState(!!beast ? beast.intelligence_mod : "");
-    const [wisdom, setWisdom] = useState(!!beast ? beast.wisdom : "");
-    const [wisdom_mod, setWisdomMod] = useState(!!beast ? beast.wisdom_mod : "");
-    const [charisma, setCharisma] = useState(!!beast ? beast.charisma : "");
-    const [charisma_mod, setCharismaMod] = useState(!!beast ? beast.charisma_mod : "");
-    const [saving_throws, setSavingThrows] = useState(!!beast ? beast.saving_throws : "");
-    const [skills, setSkills] = useState(!!beast ? beast.skills : "");
-    const [senses, setSenses] = useState(!!beast ? beast.senses : "");
-    const [languages, setLanguages] = useState(!!beast ? beast.languages : "");
-    const [challenge, setChallenge] = useState(!!beast ? beast.challenge : "");
-    const [traits, setTraits] = useState(!!beast ? beast.traits : "");
-    const [actions, setActions] = useState(!!beast ? beast.actions : "");
-    const [legendary_actions, setLegendaryActions] = useState(!!beast ? beast.legendary_actions : "");
-    const [img_url, setImageUrl] = useState(!!beast ? beast.img_url : "");
+    const [name, setName] = useState(!!monster ? monster.name : "");
+    const [meta, setMeta] = useState(!!monster ? monster.meta : "");
+    const [armor_class, setArmorClass] = useState(!!monster ? monster.armor_class : "");
+    const [hp, setHp] = useState(!!monster ? monster.hp : "");
+    const [speed, setSpeed] = useState(!!monster ? monster.speed : "");
+    const [strength, setStrength] = useState(!!monster ? monster.strength : "");
+    const [strength_mod, setStrengthMod] = useState(!!monster ? monster.strength_mod : "");
+    const [dexterity, setDexterity] = useState(!!monster ? monster.dexterity : "");
+    const [dexterity_mod, setDexterityMod] = useState(!!monster ? monster.dexterity_mod : "");
+    const [constitution, setConstitution] = useState(!!monster ? monster.constitution : "");
+    const [constitution_mod, setConstitutionMod] = useState(!!monster ? monster.constitution_mod : "");
+    const [intelligence, setIntelligence] = useState(!!monster ? monster.intelligence : "");
+    const [intelligence_mod, setIntelligenceMod] = useState(!!monster ? monster.intelligence_mod : "");
+    const [wisdom, setWisdom] = useState(!!monster ? monster.wisdom : "");
+    const [wisdom_mod, setWisdomMod] = useState(!!monster ? monster.wisdom_mod : "");
+    const [charisma, setCharisma] = useState(!!monster ? monster.charisma : "");
+    const [charisma_mod, setCharismaMod] = useState(!!monster ? monster.charisma_mod : "");
+    const [saving_throws, setSavingThrows] = useState(!!monster ? monster.saving_throws : "");
+    const [skills, setSkills] = useState(!!monster ? monster.skills : "");
+    const [senses, setSenses] = useState(!!monster ? monster.senses : "");
+    const [languages, setLanguages] = useState(!!monster ? monster.languages : "");
+    const [challenge, setChallenge] = useState(!!monster ? monster.challenge : "");
+    const [traits, setTraits] = useState(!!monster ? monster.traits : "");
+    const [actions, setActions] = useState(!!monster ? monster.actions : "");
+    const [legendary_actions, setLegendaryActions] = useState(!!monster ? monster.legendary_actions : "");
+    const [img_url, setImageUrl] = useState(!!monster ? monster.img_url : "");
 
     const handleSetName = (e) => {
         setName(e.target.value);
@@ -111,9 +111,9 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
         setImageUrl(e.target.value);
     }
 
-    const addBeast = (event) => {
+    const addMonster = (event) => {
         event.preventDefault();
-        localStorage.setItem('beasts', JSON.stringify([...beasts, {
+        localStorage.setItem('monsters', JSON.stringify([...monsters, {
             id: uuid.v4(),
             name: name,
             meta: meta,
@@ -142,8 +142,8 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
             legendary_actions: legendary_actions,
             img_url: img_url
         }]));
-        let parsed = JSON.parse(localStorage.getItem('beasts'));
-        setBeasts(parsed);
+        let parsed = JSON.parse(localStorage.getItem('monsters'));
+        setMonsters(parsed);
         setName('');
         setMeta('');
         setArmorClass('');
@@ -172,14 +172,14 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
         setImageUrl('');
     }
 
-    const updateBeast = (event) => {
+    const updateMonster = (event) => {
         event.preventDefault();
-        let beasts = JSON.parse(localStorage.getItem('beasts'));
-        let updatedBeasts = beasts
-            .map(beastFromStore => {
-                if (beast.id === beastFromStore.id) {
+        let monsters = JSON.parse(localStorage.getItem('monsters'));
+        let updatedMonsters = monsters
+            .map(monsterFromStore => {
+                if (monster.id === monsterFromStore.id) {
                     return {
-                        id: beastFromStore.id,
+                        id: monsterFromStore.id,
                         name: name,
                         meta: meta,
                         armor_class: armor_class,
@@ -208,11 +208,11 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
                         img_url: img_url
                     }
                 }
-                return beastFromStore;
+                return monsterFromStore;
             });
-        localStorage.setItem('beasts', JSON.stringify(updatedBeasts));
-        let parsed = JSON.parse(localStorage.getItem('beasts'));
-        setBeasts(parsed);
+        localStorage.setItem('monsters', JSON.stringify(updatedMonsters));
+        let parsed = JSON.parse(localStorage.getItem('monsters'));
+        setMonsters(parsed);
         handleClose();
     }
 
@@ -221,12 +221,12 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
             {
                 readOnly ?
                     null :
-                    <h3 className="title">{(!!beast ? "Update" : "Add") + " beast"}</h3>
+                    <h3 className="title">{(!!monster ? "Update" : "Add") + " monster"}</h3>
             }
             <form
-                id="addBeastForm"
-                onSubmit={(e) => addBeast(e)}
-                className={"form form-data" + !!beast ? " form-read-only" : ""}
+                id="addMonsterForm"
+                onSubmit={(e) => addMonster(e)}
+                className={"form form-data" + !!monster ? " form-read-only" : ""}
             >
                 <FormData name="name" label="Name" value={name} action={handleSetName}/>
                 <FormData name="meta" label="Meta" value={meta} action={handleSetMeta}/>
@@ -285,11 +285,11 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
                     readOnly ?
                         null
                         :
-                        !!beast ?
+                        !!monster ?
                             <Button
                                 disabled={!name || !meta}
                                 variant="primary"
-                                onClick={updateBeast}
+                                onClick={updateMonster}
                             >
                                 Update
                             </Button>
@@ -307,4 +307,4 @@ const BeastForm = ({beasts, setBeasts, beast, readOnly = false, handleClose}) =>
     )
 }
 
-export default BeastForm;
+export default MonsterForm;

@@ -35,25 +35,25 @@
     font-style: italic;
 }
 
-.beasts {
+.monsters {
     width: 70vw;
     display: grid;
     grid-template-columns: 2fr 4fr 12fr 2fr;
 }
 
 @media (max-width: 1000px) {
-    .beasts {
+    .monsters {
         width: 90vw;
         display: grid;
         grid-template-columns: 1fr 1fr 2fr 1fr;
     }
 }
 
-.beasts-uneven {
+.monsters-uneven {
     background-color: #f1e688;
 }
 
-.beasts-header {
+.monsters-header {
     border-bottom: 3px solid #86211b;
 }
 

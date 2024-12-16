@@ -6,7 +6,7 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Beasts from "./pages/beasts/Beasts.jsx";
+import Monsters from "./pages/monsters/Monsters.jsx";
 import Spells from "./pages/spells/Spells.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import version from "../package.json";
@@ -24,8 +24,8 @@ function App() {
                         path="/dnd-cards"
                         element={<Home/>}/>
                     <Route
-                        path="/beasts"
-                        element={<Beasts/>}/>
+                        path="/monsters"
+                        element={<Monsters/>}/>
                     <Route
                         path="/spells"
                         element={<Spells/>}
