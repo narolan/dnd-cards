@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Select from 'react-select';
 
 export default function SelectSearch(props) {
@@ -37,6 +37,7 @@ export default function SelectSearch(props) {
                 aria-labelledby="aria-label"
                 inputId="aria-example-input"
                 name="aria-live-color"
+                value={props.selected}
                 onMenuOpen={onMenuOpen}
                 onMenuClose={onMenuClose}
                 options={props.options}
