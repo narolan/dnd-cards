@@ -33,7 +33,7 @@ function App() {
                 </Routes>
             </Router>
             <footer className="footer">
-                <div className="copywright">v{version.version} | ©2024 DnD Cards | All Rights Reserved</div>
+                <div className="copywright">v{version.version} | ©2024 DnD Cards</div>
             </footer>
         </>
     );
