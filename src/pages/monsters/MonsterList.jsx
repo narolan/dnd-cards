@@ -5,8 +5,8 @@ import {faEye, faPencil} from "@fortawesome/free-solid-svg-icons";
 
 const MonsterList = (props) => {
     return (
-        <article className="block monsters-header">
-            <div className="monsters monsters-header">
+        <article className="block block-header">
+            <div className="monsters block-header">
                 <p className="text-grid text-bold">Img</p>
                 <p className="text-grid text-bold">Name</p>
                 <p className="text-grid text-bold">Meta</p>
@@ -15,7 +15,7 @@ const MonsterList = (props) => {
             {
                 props.monsters.map((monster, index) => {
                     return (
-                        <div key={monster.id} className={index % 2 === 1 ? "monsters monsters-uneven" : "monsters"}>
+                        <div key={monster.id} className={index % 2 === 1 ? "monsters lists-uneven" : "monsters"}>
                             <img width="50" height="50" alt="N/A"
                                  src={monster.img_url}/>
                             <p title={monster.name} className="text-grid text-italic">{monster.name}</p>

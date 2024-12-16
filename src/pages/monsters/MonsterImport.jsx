@@ -26,7 +26,7 @@ const MonsterImport = (props) => {
     }
 
     return (
-        <article className="block monsters-header">
+        <article className="block block-header">
             <SelectSearch type="monster"
                           options={importedMonsters
                               .filter(it => !props.monsters.find(monster => monster.name === it.name))

@@ -49,11 +49,11 @@
     }
 }
 
-.monsters-uneven {
+.lists-uneven {
     background-color: #f1e688;
 }
 
-.monsters-header {
+.block-header {
     border-bottom: 3px solid #86211b;
 }
 
@@ -110,5 +110,19 @@
         display: inline;
         padding-left: .25rem;
         margin: 0;
+    }
+}
+
+.spells {
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 5fr 2fr 3fr;
+}
+
+@media (max-width: 1000px) {
+    .spells {
+        width: 90vw;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
     }
 }
