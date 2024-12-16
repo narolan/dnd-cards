@@ -10,7 +10,6 @@ import Beasts from "./pages/beasts/Beasts.jsx";
 import Spells from "./pages/spells/Spells.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import version from "../package.json";
-import Coffee from "./components/Coffee";
 
 function App() {
     return (
@@ -34,7 +33,6 @@ function App() {
                 </Routes>
             </Router>
             <footer className="footer">
-                <Coffee/>
                 <div className="copywright">v{version.version} | ©2024 DnD Cards | All Rights Reserved</div>
             </footer>
         </>

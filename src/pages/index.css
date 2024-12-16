@@ -90,3 +90,25 @@
 .margin-bottom {
     margin-bottom: 1.5rem;
 }
+
+.mr-0-5 {
+    margin-right: .5rem;
+}
+
+.pl-0-5 {
+    display: inline;
+    padding-left: .5rem;
+    margin: 0;
+}
+
+@media (max-width: 1000px) {
+    .mr-0-5 {
+        margin-right: .25rem;
+    }
+
+    .pl-0-5 {
+        display: inline;
+        padding-left: .25rem;
+        margin: 0;
+    }
+}

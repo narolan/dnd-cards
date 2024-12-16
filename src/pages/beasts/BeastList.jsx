@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import React from "react";
+import BeastModal from "./BeastModal";
+import {faEye, faPencil} from "@fortawesome/free-solid-svg-icons";
 
 const BeastList = (props) => {
     return (
@@ -18,11 +20,17 @@ const BeastList = (props) => {
                                  src={beast.img_url}/>
                             <p title={beast.name} className="text-grid text-italic">{beast.name}</p>
                             <p title={beast.meta} className="text-grid">{beast.meta}</p>
-                            <Button className="button-small"
+                            <section>
+                                <BeastModal beast={beast} readOnly={true} icon={faEye}/>
+                                <BeastModal beast={beast} readOnly={false} icon={faPencil} setBeasts={props.setBeasts}/>
+                                <Button
+                                    className="button-small mr-0-5"
                                     variant="outline-danger"
-                                    onClick={() => props.removeBeast(beast.id)}>
-                                &#935;
-                            </Button>
+                                    onClick={() => props.removeBeast(beast.id)}
+                                >
+                                    &#935;
+                                </Button>
+                            </section>
                         </div>
                     )
                 })

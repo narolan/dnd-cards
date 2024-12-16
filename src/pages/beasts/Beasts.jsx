@@ -24,7 +24,7 @@ const Beasts = () => {
     return (
         <section>
             <h2 className="title">Beasts</h2>
-            <BeastList beasts={beasts} removeBeast={removeBeast}/>
+            <BeastList beasts={beasts} removeBeast={removeBeast} setBeasts={setBeasts}/>
             <BeastImport beasts={beasts} setBeasts={setBeasts}/>
             <BeastForm beasts={beasts} setBeasts={setBeasts}/>
         </section>

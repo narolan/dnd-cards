@@ -9,6 +9,11 @@
     margin: 1rem auto;
 }
 
+.form-read-only {
+    width: 80vw;
+    margin: 1rem auto;
+}
+
 @media (max-width: 1000px) {
     .form {
         width: 90vw;
