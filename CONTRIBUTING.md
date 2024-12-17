@@ -5,4 +5,4 @@ I might set up a Discord once there is a need for this.
 
 ## Current contributors
 
-@narolan @mip29
+[narolan](https://github.com/narolan) [mip29](https://github.com/mip29)
