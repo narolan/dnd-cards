@@ -3,6 +3,7 @@ import SelectSearch from "../../components/SelectSearch";
 import {importedMonsters} from "./importedMonsters.jsx";
 import Button from "react-bootstrap/Button";
 import * as uuid from "uuid";
+import * as storageService from "../../service/storageService";
 
 const MonsterImport = (props) => {
 
@@ -16,11 +17,11 @@ const MonsterImport = (props) => {
 
     const addImportedMonster = (event) => {
         event.preventDefault();
-        localStorage.setItem('monsters', JSON.stringify([...props.monsters, {
+        storageService.setItem('monsters', [...props.monsters, {
             id: uuid.v4(),
             ...selectedImportedMonster
-        }]));
-        let parsed = JSON.parse(localStorage.getItem('monsters'));
+        }]);
+        let parsed = storageService.getItem('monsters');
         props.setMonsters(parsed);
         setSelectedImportedMonster({});
     }

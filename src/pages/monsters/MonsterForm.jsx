@@ -2,6 +2,7 @@ import FormData from "../../components/FormData";
 import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
+import * as storageService from "../../service/storageService";
 
 const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleClose}) => {
 
@@ -113,7 +114,7 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
 
     const addMonster = (event) => {
         event.preventDefault();
-        localStorage.setItem('monsters', JSON.stringify([...monsters, {
+        storageService.setItem('monsters', [...monsters, {
             id: uuid.v4(),
             name: name,
             meta: meta,
@@ -141,8 +142,8 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
             actions: actions,
             legendary_actions: legendary_actions,
             img_url: img_url
-        }]));
-        let parsed = JSON.parse(localStorage.getItem('monsters'));
+        }]);
+        let parsed = storageService.getItem('monsters');
         setMonsters(parsed);
         setName('');
         setMeta('');
@@ -174,7 +175,7 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
 
     const updateMonster = (event) => {
         event.preventDefault();
-        let monsters = JSON.parse(localStorage.getItem('monsters'));
+        let monsters = storageService.getItem('monsters');
         let updatedMonsters = monsters
             .map(monsterFromStore => {
                 if (monster.id === monsterFromStore.id) {
@@ -210,8 +211,8 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
                 }
                 return monsterFromStore;
             });
-        localStorage.setItem('monsters', JSON.stringify(updatedMonsters));
-        let parsed = JSON.parse(localStorage.getItem('monsters'));
+        storageService.setItem('monsters', updatedMonsters);
+        let parsed = storageService.getItem('monsters');
         setMonsters(parsed);
         handleClose();
     }

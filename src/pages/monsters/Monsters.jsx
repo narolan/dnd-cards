@@ -2,22 +2,23 @@ import React, {useEffect, useState} from 'react';
 import MonsterImport from "./MonsterImport";
 import MonsterList from "./MonsterList";
 import MonsterForm from "./MonsterForm";
+import * as storageService from "../../service/storageService";
 
 const Monsters = () => {
 
     const [monsters, setMonsters] = useState([]);
 
     useEffect(() => {
-        const monsters = JSON.parse(localStorage.getItem('monsters'));
+        const monsters = storageService.getItem('monsters');
         if (monsters) {
             setMonsters(monsters);
         }
     }, []);
 
     const removeMonster = (id) => {
-        let monsters = JSON.parse(localStorage.getItem('monsters'));
+        let monsters = storageService.getItem('monsters');
         let leftOverMonsters = monsters.filter(monster => monster.id !== id);
-        localStorage.setItem('monsters', JSON.stringify(leftOverMonsters));
+        storageService.setItem('monsters', leftOverMonsters);
         setMonsters(leftOverMonsters);
     }
 

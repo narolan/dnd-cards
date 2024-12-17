@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
 import {importedSpells} from "./importedSpells";
+import * as storageService from "../../service/storageService";
 
 const SpellImport = ({ spells, setSpells }) => {
 
@@ -16,11 +17,11 @@ const SpellImport = ({ spells, setSpells }) => {
 
     const addImportedSpell = (event) => {
         event.preventDefault();
-        localStorage.setItem('spells', JSON.stringify([...spells, {
+        storageService.setItem('spells', [...spells, {
             id: uuid.v4(),
             ...selectedImportedSpell
-        }]));
-        let parsed = JSON.parse(localStorage.getItem('spells'));
+        }]);
+        let parsed = storageService.getItem('spells');
         setSpells(parsed);
         setSelectedImportedSpell({});
     }

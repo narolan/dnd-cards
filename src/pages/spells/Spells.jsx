@@ -1,22 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import SpellList from "./SpellList";
 import SpellImport from "./SpellImport";
+import * as storageService from "../../service/storageService";
 
 const Spells = () => {
 
     const [spells, setSpells] = useState([]);
 
     useEffect(() => {
-        const spells = JSON.parse(localStorage.getItem('spells'));
+        const spells = storageService.getItem('spells');
         if (spells) {
             setSpells(spells);
         }
     }, []);
 
     const removeSpell = (id) => {
-        let spells = JSON.parse(localStorage.getItem('spells'));
+        let spells = storageService.getItem('spells');
         let leftOverSpells = spells.filter(spell => spell.id !== id);
-        localStorage.setItem('spells', JSON.stringify(leftOverSpells));
+        storageService.setItem('spells', leftOverSpells);
         setSpells(leftOverSpells);
     }
 
