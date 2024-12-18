@@ -24,7 +24,7 @@ const Spells = () => {
     return (
         <section>
             <h2 className="title">Spells</h2>
-            <SpellList spells={spells} removeSpell={removeSpell}/>
+            <SpellList spells={spells} setSpells={setSpells} removeSpell={removeSpell}/>
             <SpellImport spells={spells} setSpells={setSpells}/>
         </section>
     )

@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import * as uuid from "uuid";
 import * as storageService from "../../service/storageService";
 
-const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleClose}) => {
+const MonsterForm = ({monsters, setMonsters, monster, readOnly = false}) => {
 
     const [name, setName] = useState(!!monster ? monster.name : "");
     const [meta, setMeta] = useState(!!monster ? monster.meta : "");
@@ -214,7 +214,6 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
         storageService.setItem('monsters', updatedMonsters);
         let parsed = storageService.getItem('monsters');
         setMonsters(parsed);
-        handleClose();
     }
 
     return (
@@ -288,6 +287,8 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false, handleCl
                         :
                         !!monster ?
                             <Button
+                                id="updateForm"
+                                style={{display: "none"}}
                                 disabled={!name || !meta}
                                 variant="primary"
                                 onClick={updateMonster}

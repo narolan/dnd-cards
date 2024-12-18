@@ -1,9 +1,35 @@
 import Button from "react-bootstrap/Button";
 import React from "react";
-import MonsterModal from "./MonsterModal";
 import {faEye, faPencil} from "@fortawesome/free-solid-svg-icons";
+import ModalComponent from "../../components/ModalComponent";
+import MonsterForm from "./MonsterForm";
 
 const MonsterList = (props) => {
+
+    function getBodyHtml(monster, isReadOnly) {
+        if (isReadOnly) {
+            return (
+                <fieldset disabled>
+                    <MonsterForm monster={monster} readOnly={true}/>
+                </fieldset>
+            );
+        } else {
+            return <MonsterForm monster={monster} readOnly={false} setMonsters={props.setMonsters}/>
+        }
+    }
+
+    function getTitleHtml(monster) {
+        return <>
+            <img
+                width="50"
+                height="50"
+                alt="N/A"
+                src={monster.img_url}
+            />
+            <p className="pl-0-5">{monster.name}</p>
+        </>;
+    }
+
     return (
         <article className="block block-header">
             <div className="monsters block-header">
@@ -21,8 +47,18 @@ const MonsterList = (props) => {
                             <p title={monster.name} className="text-grid text-italic">{monster.name}</p>
                             <p title={monster.meta} className="text-grid">{monster.meta}</p>
                             <section>
-                                <MonsterModal monster={monster} readOnly={true} icon={faEye}/>
-                                <MonsterModal monster={monster} readOnly={false} icon={faPencil} setMonsters={props.setMonsters}/>
+                                <ModalComponent
+                                    bodyHtml={getBodyHtml(monster, true)}
+                                    titleHtml={getTitleHtml(monster)}
+                                    icon={faEye}
+                                />
+                                <ModalComponent
+                                    bodyHtml={getBodyHtml(monster, false)}
+                                    titleHtml={getTitleHtml(monster)}
+                                    actionValue={monster}
+                                    action={"updateForm"}
+                                    icon={faPencil}
+                                />
                                 <Button
                                     className="button-small mr-0-5"
                                     variant="outline-danger"

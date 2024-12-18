@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import ModalComponent from "../../components/ModalComponent";
+import {faEye} from "@fortawesome/free-solid-svg-icons";
+import SpellForm from "./SpellForm";
 
-const SpellList = ({ spells, removeSpell }) => {
+const SpellList = ({spells, setSpells, removeSpell}) => {
 
     const spellLevel = (spell) => {
         if (spell.level === 0) {
@@ -21,7 +24,23 @@ const SpellList = ({ spells, removeSpell }) => {
         }
     }
 
-    return(
+    function getBodyHtml(spell, isReadOnly) {
+        if (isReadOnly) {
+            return (
+                <fieldset disabled>
+                    <SpellForm spells={spells} setSpells={setSpells} spell={spell} readOnly={true}/>
+                </fieldset>
+            );
+        } else {
+            return <p>TODO</p>
+        }
+    }
+
+    function getTitleHtml(spell) {
+        return <p>{spell.name}</p>;
+    }
+
+    return (
         <article className="block block-header">
             <section className="spells block-header">
                 <p className="text-grid text-bold">Name</p>
@@ -38,6 +57,11 @@ const SpellList = ({ spells, removeSpell }) => {
                                 <p title={spell.school} className="text-grid">{spell.school}</p>
                                 <p title={spell.school} className="text-grid">{spellLevel(spell)}</p>
                                 <section>
+                                    <ModalComponent
+                                        bodyHtml={getBodyHtml(spell, true)}
+                                        titleHtml={getTitleHtml(spell)}
+                                        icon={faEye}
+                                    />
                                     <Button
                                         className="button-small mr-0-5"
                                         variant="outline-danger"
