@@ -85,15 +85,13 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                     {/*    generatePdfName={spell.name.replaceAll(" ", "_")}*/}
                                     {/*    icon={faPrint}*/}
                                     {/*/>*/}
-                                    <section className="desktop">
-                                        <ModalComponent
-                                            bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell}/>}
-                                            titleHtml={getTitleHtml(spell)}
-                                            generatePdf={true}
-                                            generatePdfName={spell.name.replaceAll(" ", "_")}
-                                            icon={faPrint}
-                                        />
-                                    </section>
+                                    <ModalComponent
+                                        bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell}/>}
+                                        titleHtml={getTitleHtml(spell)}
+                                        generatePdf={true}
+                                        generatePdfName={spell.name.replaceAll(" ", "_")}
+                                        icon={faPrint}
+                                    />
                                     <Button
                                         className="button-small mr-0-5"
                                         variant="outline-danger"
