@@ -2,7 +2,7 @@ import FormData from "../../components/FormData";
 import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
-import * as storageService from "../../service/storageService";
+import * as storageService from "../../services/storageService";
 
 const MonsterForm = ({monsters, setMonsters, monster, readOnly = false}) => {
 

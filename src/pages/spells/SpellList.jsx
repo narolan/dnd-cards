@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import ModalComponent from "../../components/ModalComponent";
-import {faEye} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
+import SpellCard from "./SpellCard";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
 
@@ -40,6 +41,21 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
         return <p>{spell.name}</p>;
     }
 
+    const schools = {
+        "A": "Abjuration" ,
+        "T": "Transmutation",
+        "E": "Enchantment",
+        "N": "Necromancy",
+        "D": "Divination",
+        "C": "Conjuration",
+        "V": "Evocation",
+        "I": "Illusion"
+    }
+
+    const getSchool = (school) => {
+        return schools[school];
+    }
+
     return (
         <article className="block block-header">
             <section className="spells block-header">
@@ -54,13 +70,20 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                         return (
                             <section key={spell.id} className={index % 2 === 1 ? "spells lists-uneven" : "spells"}>
                                 <p title={spell.name} className="text-grid text-italic">{spell.name}</p>
-                                <p title={spell.school} className="text-grid">{spell.school}</p>
+                                <p title={getSchool(spell.school)} className="text-grid">{spell.school}</p>
                                 <p title={spell.school} className="text-grid">{spellLevel(spell)}</p>
                                 <section>
                                     <ModalComponent
                                         bodyHtml={getBodyHtml(spell, true)}
                                         titleHtml={getTitleHtml(spell)}
                                         icon={faEye}
+                                    />
+                                    <ModalComponent
+                                        bodyHtml={<SpellCard school={getSchool(spell.school)} spell={spell}/>}
+                                        titleHtml={getTitleHtml(spell)}
+                                        generatePdf={true}
+                                        generatePdfName={spell.name.replaceAll(" ", "_")}
+                                        icon={faPrint}
                                     />
                                     <Button
                                         className="button-small mr-0-5"

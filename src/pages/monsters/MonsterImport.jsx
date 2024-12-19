@@ -3,7 +3,7 @@ import SelectSearch from "../../components/SelectSearch";
 import {importedMonsters} from "./importedMonsters.jsx";
 import Button from "react-bootstrap/Button";
 import * as uuid from "uuid";
-import * as storageService from "../../service/storageService";
+import * as storageService from "../../services/storageService";
 
 const MonsterImport = (props) => {
 

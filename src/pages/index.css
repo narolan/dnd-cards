@@ -126,3 +126,60 @@
         grid-template-columns: 2fr 1fr 1fr 1fr;
     }
 }
+
+.a4-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 297 / 210; /* Retaining A4 aspect ratio */
+    overflow: hidden; /* To hide overflow from background */
+}
+
+.background {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("public/background.png"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* This affects only the background */
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2; /* Ensure content is in front of the background */
+    padding: 20px;
+    opacity: 1; /* Ensure content is fully visible */
+    color: dimgray; /* Appropriate text color for contrast */
+    background: transparent; /* Ensures no background color affects text */
+}
+
+@media (min-width: 992px) { /* Desktop */
+    .a4-card {
+        max-width: 794px; /* A4 paper width in px */
+        height: 1123px; /* A4 paper height in px */
+    }
+}
+
+@media (max-width: 991px) { /* Tablets */
+    .a4-card {
+        max-width: 95%; /* Adjust as needed for your design */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+@media (max-width: 576px) { /* Mobile */
+    .a4-card {
+        max-width: 90%; /* Adjust for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+.card-text {
+    text-align: center;
+    color: dimgray;
+}

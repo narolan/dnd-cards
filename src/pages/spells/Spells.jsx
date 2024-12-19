@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import SpellList from "./SpellList";
 import SpellImport from "./SpellImport";
-import * as storageService from "../../service/storageService";
+import * as storageService from "../../services/storageService";
 
 const Spells = () => {
 

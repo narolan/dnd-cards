@@ -2,7 +2,7 @@ import FormData from "../../components/FormData";
 import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
-import * as storageService from "../../service/storageService";
+import * as storageService from "../../services/storageService";
 import Form from "react-bootstrap/Form";
 
 const SpellForm = ({spells, setSpells, spell, readOnly = false}) => {
@@ -81,7 +81,7 @@ const SpellForm = ({spells, setSpells, spell, readOnly = false}) => {
                 <section style={{margin: ".5rem 0", color: "black", display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
                     <Form.Check name="verbal" label="Verbal Requirement" checked={components.v}/>
                     <Form.Check name="somatic" label="Somatic Requirement" checked={components.s}/>
-                    <Form.Check name="material" label="Material Requirement" checked={components.m}/>
+                    <FormData name="material" label="Material Requirement" value={components.m}/>
                 </section>
                 <FormData name="duration" label="Duration" value={duration.map(dur => dur.type)}/>
                 <FormData name="entries" label="Entries" value={entries}/>

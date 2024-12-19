@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MonsterImport from "./MonsterImport";
 import MonsterList from "./MonsterList";
 import MonsterForm from "./MonsterForm";
-import * as storageService from "../../service/storageService";
+import * as storageService from "../../services/storageService";
 
 const Monsters = () => {
 

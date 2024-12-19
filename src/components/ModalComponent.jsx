@@ -2,8 +2,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
+import * as pdfService from "../services/pdfService.jsx";
 
-const ModalComponent = ({ icon, titleHtml, bodyHtml, action, actionText = "Update" }) => {
+const ModalComponent = ({ icon, titleHtml, bodyHtml, action, actionText = "Update", generatePdf, generatePdfName }) => {
 
     const [show, setShow] = useState(false);
 
@@ -42,6 +43,19 @@ const ModalComponent = ({ icon, titleHtml, bodyHtml, action, actionText = "Updat
                                 }
                             >
                                 {actionText}
+                            </Button>
+                            :
+                            null
+                    }
+                    {
+                        generatePdf ?
+                            <Button
+                                variant="primary"
+                                onClick={
+                                    () => pdfService.generatePDF("cardId", generatePdfName)
+                                }
+                            >
+                                Generate PDF
                             </Button>
                             :
                             null
