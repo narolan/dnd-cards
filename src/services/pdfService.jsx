@@ -9,9 +9,9 @@ export const generatePDF = async (elementToPrintId, name) => {
     const canvas = await html2canvas(element, { scale: 2 });
     const data = canvas.toDataURL("image/png");
     const pdf = new jsPDF({
-        orientation: "landscape",
+        orientation: "portrait",
         unit: "mm",
-        format: [297, 210],
+        format: [50, 100],
     });
     const imgProperties = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();

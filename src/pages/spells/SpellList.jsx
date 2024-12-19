@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import ModalComponent from "../../components/ModalComponent";
 import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
-import SpellCard from "./SpellCard";
+import SpellCardV2 from "./SpellCardV2";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
 
@@ -78,8 +78,15 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                         titleHtml={getTitleHtml(spell)}
                                         icon={faEye}
                                     />
+                                    {/*<ModalComponent*/}
+                                    {/*    bodyHtml={<SpellCard school={getSchool(spell.school)} spell={spell}/>}*/}
+                                    {/*    titleHtml={getTitleHtml(spell)}*/}
+                                    {/*    generatePdf={true}*/}
+                                    {/*    generatePdfName={spell.name.replaceAll(" ", "_")}*/}
+                                    {/*    icon={faPrint}*/}
+                                    {/*/>*/}
                                     <ModalComponent
-                                        bodyHtml={<SpellCard school={getSchool(spell.school)} spell={spell}/>}
+                                        bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell}/>}
                                         titleHtml={getTitleHtml(spell)}
                                         generatePdf={true}
                                         generatePdfName={spell.name.replaceAll(" ", "_")}
