@@ -49,7 +49,7 @@ const SpellCardV2 = ({spell, school}) => {
                 }}>
                     <section style={{backgroundColor: "white", width: "50px", height: "50px", borderRadius: "50px"}}>
                         <img alt="" style={{display: "block", position: "relative", top: "10px", left: "10px"}} width="30px"
-                             height="30px" src={school + ".png"}/>
+                             height="30px" src={"https://narolan.github.io/dnd-cards/" + school + ".png"}/>
                     </section>
                     <h2 style={{textAlign: "center"}}>{spell.name}</h2>
                 </section>
