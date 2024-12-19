@@ -20,3 +20,21 @@
         margin: 1rem auto;
     }
 }
+
+.desktop {
+
+}
+
+.mobile {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: inherit !important;
+    }
+}
