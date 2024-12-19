@@ -85,20 +85,25 @@ const SpellCard = ({spell, school}) => {
                             <section
                                 style={{
                                     display: "grid",
-                                    gridTemplateColumns: getGridTemplateColumns(Object.keys(spell.scalingLevelDice.scaling).length + 1)
+                                    gridTemplateColumns: getGridTemplateColumns(Object.keys(!!spell.scalingLevelDice?.scaling ? spell.scalingLevelDice?.scaling : {}).length + 1)
                                 }}
                             >
                                 <section>
                                     <h5>Scaling Level Dice</h5>
-                                    <p>{spell.scalingLevelDice.label}</p>
+                                    <p>{spell.scalingLevelDice?.label}</p>
                                 </section>
-                                {Object.entries(spell.scalingLevelDice.scaling)
-                                    .map(([label, value], index) => (
-                                        <section key={index}>
-                                            <h5>Dice at level {label}</h5>
-                                            <p>{value}</p>
-                                        </section>
-                                    ))}
+                                {
+                                    !!spell.scalingLevelDice?.scaling ?
+                                        Object.entries(spell.scalingLevelDice?.scaling)
+                                        .map(([label, value], index) => (
+                                            <section key={index}>
+                                                <h5>Dice at level {label}</h5>
+                                                <p>{value}</p>
+                                            </section>
+                                        ))
+                                        :
+                                        null
+                                    }
                             </section>
                         </section>
                         <section style={{gridColumn: "span 5"}}>
