@@ -40,12 +40,13 @@ const Home = () => {
             <h1 className="title">Welcome to DnD Cards</h1>
             <section className="block">
                 <p className="text">The purpose of this application is to create cards for Dungeon & Dragons.</p>
-                <p className="text">You can use them through the application or print them as actual cards.</p>
-                <p className="text">All the info is stored locally, so no syncing happens between mobile and
-                    desktop.</p>
+                <p className="text">You can use them through the application or print them from your desktop/laptop as actual cards.</p>
+                <p className="text">All the info is stored locally, so no syncing happens between mobile and desktop.</p>
             </section>
             <section className="block" style={{ marginTop: "10px", marginBottom: "2rem" }}>
                 <h4>Export/Import</h4>
+                <p>In order to sync data between devices we currently support exporting and importing data.</p>
+                <p>Simply push the export button. This will generate a hashed version of your data. Go to your other device, paste the hashed text and press 'Import'.</p>
                 <Button
                     variant="primary"
                     onClick={getDataAsBase64}
