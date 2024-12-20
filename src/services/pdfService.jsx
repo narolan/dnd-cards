@@ -11,12 +11,9 @@ export const generatePDF = async (elementToPrintId, name) => {
     const pdf = new jsPDF({
         orientation: "portrait",
         unit: "mm",
-        format: [50, 100],
+        format: 'a4',
     });
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
-    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.addImage(data, "PNG", 0, 0, element.clientWidth/8, element.clientHeight/8);
     pdf.save(name + ".pdf");
 };

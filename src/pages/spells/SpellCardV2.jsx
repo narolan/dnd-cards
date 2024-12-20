@@ -111,7 +111,16 @@ const SpellCardV2 = ({spell, school}) => {
                             null
                     }
                     <p style={{textAlign: "left", paddingLeft: "5px"}}>
-                        {spell.entries.join(' ')}
+                        {
+                            spell.entries
+                                .map(entry => {
+                                    if (entry instanceof Object) {
+                                        return entry.name + ": " + entry.entries.join(' ');
+                                    }
+                                    return entry;
+                                })
+                                .join(' ')
+                        }
                     </p>
                 </section>
                 {
