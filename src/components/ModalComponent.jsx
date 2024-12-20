@@ -27,7 +27,7 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
                         {titleHtml}
                     </Modal.Title>
                 </Modal.Header>-
-                <Modal.Body>
+                <Modal.Body style={{ margin: "auto" }}>
                     {bodyHtml}
                 </Modal.Body>
                 <Modal.Footer>
