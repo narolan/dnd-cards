@@ -110,7 +110,7 @@ const SpellCardV2 = ({spell, school}) => {
                             :
                             null
                     }
-                    <p style={{textAlign: "left", paddingLeft: "5px"}}>
+                    <p style={{ textAlign: "left", paddingLeft: "5px", wordWrap: "break-word", overflowWrap: "break-word" }}>
                         {
                             spell.entries
                                 .map(entry => {
