@@ -78,22 +78,25 @@ const SpellForm = ({spells, setSpells, spell, readOnly = false}) => {
                 <FormData name="rangeType" label="Range Type" value={range.type}/>
                 <FormData name="rangeDistance" label="Range Distance"
                           value={range.distance.amount + " " + range.distance.type}/>
-                <section style={{margin: ".5rem 0", color: "black", display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
+                <section
+                    style={{margin: ".5rem 0", color: "black", display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
                     <Form.Check name="verbal" label="Verbal Requirement" checked={components.v}/>
                     <Form.Check name="somatic" label="Somatic Requirement" checked={components.s}/>
                     <FormData name="material" label="Material Requirement" value={components.m}/>
                 </section>
                 <FormData name="duration" label="Duration" value={duration.map(dur => dur.type)}/>
                 <FormData name="entries" label="Entries" value={entries}/>
-                <FormData name="scalingLevelDice" label="Scaling Level Dice" value={scalingLevelDice.label}/>
+                <FormData name="scalingLevelDice" label="Scaling Level Dice" value={scalingLevelDice?.label}/>
                 {
-                    Object.entries(scalingLevelDice.scaling)
-                        .map(([label, value]) => (
-                            <>
-                                <FormData key={label} name="scalingLevelDice" label={"Dice at level " + label}
-                                          value={value}/>
-                            </>
-                        ))
+                    scalingLevelDice?.scaling ?
+                        Object.entries(scalingLevelDice.scaling)
+                            .map(([label, value]) => (
+                                <>
+                                    <FormData key={label} name="scalingLevelDice" label={"Dice at level " + label}
+                                              value={value}/>
+                                </>
+                            ))
+                        : null
                 }
                 <FormData name="damageInflict" label="Damage Inflict" value={damageInflict}/>
                 <FormData name="savingThrow" label="Saving Throw" value={savingThrow}/>
