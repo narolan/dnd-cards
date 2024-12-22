@@ -52,13 +52,17 @@ const MonsterList = (props) => {
                                     titleHtml={getTitleHtml(monster)}
                                     icon={faEye}
                                 />
-                                <ModalComponent
-                                    bodyHtml={getBodyHtml(monster, false)}
-                                    titleHtml={getTitleHtml(monster)}
-                                    actionValue={monster}
-                                    action={"updateForm"}
-                                    icon={faPencil}
-                                />
+                                {
+                                    monster.type === "Homebrew" ?
+                                        <ModalComponent
+                                            bodyHtml={getBodyHtml(monster, false)}
+                                            titleHtml={getTitleHtml(monster)}
+                                            actionValue={monster}
+                                            action={"updateForm"}
+                                            icon={faPencil}
+                                        />
+                                        : null
+                                }
                                 <Button
                                     className="button-small mr-0-5"
                                     variant="outline-danger"

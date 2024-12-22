@@ -116,6 +116,7 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false}) => {
         event.preventDefault();
         storageService.setItem('monsters', [...monsters, {
             id: uuid.v4(),
+            type: "Homebrew",
             name: name,
             meta: meta,
             armor_class: armor_class,
