@@ -221,7 +221,7 @@ const MonsterForm = ({monsters, setMonsters, monster, readOnly = false}) => {
             {
                 readOnly ?
                     null :
-                    <h3 className="title">{(!!monster ? "Update" : "Add") + " monster"}</h3>
+                    <h3 className="title">{(!!monster ? "Update" : "Add Homebrew") + " monster"}</h3>
             }
             <form
                 id="addMonsterForm"
