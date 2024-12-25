@@ -1,4 +1,4 @@
-import {faEye} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const SpellCardV2 = ({spell, school}) => {
@@ -26,6 +26,20 @@ const SpellCardV2 = ({spell, school}) => {
         } else if (duration.type === "timed") {
             return duration.duration.amount + " " + duration.duration.type;
         }
+    }
+
+    function getMaterials(material) {
+        if (material instanceof Object) {
+            return material.cost + " " + material.text;
+        }
+        return spell.components.m;
+    }
+
+    function isConsumed(material) {
+        if (material instanceof Object) {
+            return !!material.consume;
+        }
+        return false;
     }
 
     return (
@@ -74,7 +88,14 @@ const SpellCardV2 = ({spell, school}) => {
                     <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
                         <h5>Range</h5>
                         <p>
-                            {spell.range.distance.amount + " " + spell.range.distance.type}
+                            {
+                                spell.range.type === "special" ?
+                                    "special"
+                                    :
+                                    (spell.range.distance.type === "self" || spell.range.distance.type === "touch" ?
+                                        spell.range.distance.type
+                                        : spell.range.distance.amount + " " + spell.range.distance.type)
+                            }
                         </p>
                     </section>
                 </section>
@@ -106,7 +127,10 @@ const SpellCardV2 = ({spell, school}) => {
                 <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
                     {
                         !!spell.components.m ?
-                            <p style={{textAlign: "left", paddingLeft: "5px"}}>Material: {spell.components.m}</p>
+                            <p style={{textAlign: "left", paddingLeft: "5px"}}>
+                                Material: {isConsumed(spell.components.m) ? <><FontAwesomeIcon icon={faSquareCheck} /> Consumed </> : null}
+                                {getMaterials(spell.components.m)}
+                            </p>
                             :
                             null
                     }
@@ -114,8 +138,10 @@ const SpellCardV2 = ({spell, school}) => {
                         {
                             spell.entries
                                 .map(entry => {
-                                    if (entry instanceof Object) {
+                                    if (entry instanceof Object && !!entry.entries) {
                                         return entry.name + ": " + entry.entries.join(' ');
+                                    } else if (entry instanceof Object && entry.type === 'list') {
+                                        return entry.items.join('\r\n');
                                     }
                                     return entry;
                                 })
@@ -124,7 +150,7 @@ const SpellCardV2 = ({spell, school}) => {
                     </p>
                 </section>
                 {
-                    spell.entriesHigherLevel ?
+                    !!spell.entriesHigherLevel ?
                         <>
                             <section>
                                 <h5 style={{textAlign: "center"}}>At Higher Levels</h5>

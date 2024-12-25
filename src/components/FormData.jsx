@@ -6,7 +6,7 @@ const FormData = (props) => {
     return (
         <div className="form-data-field">
             <Form.Label htmlFor={props.name} column="">{props.label}</Form.Label>
-            <Form.Control id={props.name} type="text" name={props.name} value={props.value} onChange={props.action} autoComplete="false"/>
+            <Form.Control id={props.name} type="text" name={props.name} value={props.value} onChange={props.action} readOnly={!props.action} autoComplete="false"/>
         </div>
     )
 }

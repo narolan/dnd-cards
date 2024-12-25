@@ -54,6 +54,16 @@ const SpellForm = ({spells, setSpells, spell, readOnly = false}) => {
         setSpells(parsed);
     }
 
+    function getMaterial(material) {
+        if (material instanceof Object) {
+            if (!!material.consume) {
+                return "Consumed " + material.cost + " " + material.text;
+            }
+            return material.cost + " " + material.text;
+        }
+        return material;
+    }
+
     return (
         <article className="margin-bottom">
             {
@@ -76,14 +86,18 @@ const SpellForm = ({spells, setSpells, spell, readOnly = false}) => {
                     })
                 }
                 <FormData name="rangeType" label="Range Type" value={range.type}/>
-                <FormData name="rangeDistance" label="Range Distance"
+                {
+                    range.type !== "special" ?
+                    <FormData name="rangeDistance" label="Range Distance"
                           value={range.distance.amount + " " + range.distance.type}/>
+                        : null
+                }
                 <section
-                    style={{margin: ".5rem 0", color: "black", display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
-                    <Form.Check name="verbal" label="Verbal Requirement" checked={components.v}/>
-                    <Form.Check name="somatic" label="Somatic Requirement" checked={components.s}/>
-                    <FormData name="material" label="Material Requirement" value={components.m}/>
+                    style={{margin: ".5rem 0", color: "black", display: "grid", gridTemplateColumns: "1fr 1fr"}}>
+                    <Form.Check name="verbal" label="Verbal Requirement" checked={components.v} readOnly/>
+                    <Form.Check name="somatic" label="Somatic Requirement" checked={components.s} readOnly/>
                 </section>
+                <FormData name="material" label="Material Requirement" value={getMaterial(components.m)}/>
                 <FormData name="duration" label="Duration" value={duration.map(dur => dur.type)}/>
                 <FormData name="entries" label="Entries" value={entries}/>
                 <FormData name="scalingLevelDice" label="Scaling Level Dice" value={scalingLevelDice?.label}/>
