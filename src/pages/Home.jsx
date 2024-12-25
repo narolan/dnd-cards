@@ -12,6 +12,17 @@ const Home = () => {
         setImportData(event.target.value);
     }
 
+    function encodeToBase64(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        let binary = '';
+        const len = data.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(data[i]);
+        }
+        return window.btoa(binary);
+    }
+
     function getDataAsBase64() {
         let monsters = storageService.getItem('monsters');
         let spells = storageService.getItem('spells');
@@ -21,14 +32,26 @@ const Home = () => {
             "spells": spells
         }
 
-        let base64 = btoa(JSON.stringify(data));
+        let encoded = encodeToBase64(JSON.stringify(data));
+        let base64 = btoa(encoded);
         navigator.clipboard.writeText(base64);
         alert('Data copied to clipboard');
     }
 
+    function decodeFromBase64(base64) {
+        const binary = window.atob(base64);
+        const len = binary.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        const decoder = new TextDecoder();
+        return decoder.decode(bytes);
+    }
+
     function importDataIntoStorage() {
-        let data = atob(importData);
-        let parsed = JSON.parse(data);
+        let data = decodeFromBase64(importData);
+        let parsed = JSON.parse(atob(data));
         storageService.setItem('monsters', parsed.monsters);
         storageService.setItem('spells', parsed.spells);
         handleImportChange({target: {value: ''}});
