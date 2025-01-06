@@ -94,7 +94,7 @@ const MonsterImport = (props) => {
         <article className="block block-header">
             <section style={{margin: "5px 20%"}}>
                 <h3 style={{textAlign: "center"}}>Filters</h3>
-                <section style={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
+                <section className="form-filters">
                     <SelectSearch
                         type="CR"
                         isMulti={true}
