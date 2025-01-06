@@ -9,6 +9,11 @@
     margin: 1rem auto;
 }
 
+.form--small {
+    width: 25vw;
+    margin: 0 1rem;
+}
+
 .form-read-only {
     width: 80vw;
     margin: 1rem auto;

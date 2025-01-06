@@ -5,14 +5,49 @@ import * as uuid from "uuid";
 import {importedSpells} from "./importedSpells";
 import * as storageService from "../../services/storageService";
 
-const SpellImport = ({ spells, setSpells }) => {
+const levelOptions = [
+    {value: "0", label: "0"},
+    {value: "1", label: "1"},
+    {value: "2", label: "2"},
+    {value: "3", label: "3"},
+    {value: "4", label: "4"},
+    {value: "5", label: "5"},
+    {value: "6", label: "6"},
+    {value: "7", label: "7"},
+    {value: "8", label: "8"},
+    {value: "9", label: "9"},
+];
+
+const schools = [
+    { value: "A", label: "Abjuration"},
+    { value: "T", label: "Transmutation"},
+    { value: "E", label: "Enchantment"},
+    { value: "N", label: "Necromancy"},
+    { value: "D", label: "Divination"},
+    { value: "C", label: "Conjuration"},
+    { value: "V", label: "Evocation"},
+    { value: "I", label: "Illusion"}
+];
+
+
+const SpellImport = ({spells, setSpells}) => {
 
     const [selectedImportedSpell, setSelectedImportedSpell] = useState({});
+    const [filterByLevels, setFilterByLevels] = useState([]);
+    const [filterBySchools, setFilterBySchools] = useState([]);
 
     const handleSetSelectedImportedSpell = (spell) => {
         if (!!spell?.value) {
             setSelectedImportedSpell(spell.value);
         }
+    }
+
+    const handleSetFileterByLevels = (level) => {
+        setFilterByLevels(level);
+    }
+
+    const handleSetFileterBySchools = (school) => {
+        setFilterBySchools(school);
     }
 
     const addImportedSpell = (event) => {
@@ -28,10 +63,47 @@ const SpellImport = ({ spells, setSpells }) => {
 
     return (
         <article className="block block-header">
+            <section style={{margin: "5px 20%"}}>
+                <h3 style={{textAlign: "center"}}>Filters</h3>
+                <section style={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
+                    <SelectSearch
+                        type="level"
+                        isMulti={true}
+                        isSmall={true}
+                        options={levelOptions
+                            .filter(it => !filterByLevels.includes(it.value))}
+                        selected={filterByLevels}
+                        action={handleSetFileterByLevels}
+                    />
+                    <SelectSearch
+                        type="school"
+                        isMulti={true}
+                        isSmall={true}
+                        options={schools
+                            .filter(it => !filterBySchools.includes(it.value))}
+                        selected={filterBySchools}
+                        action={handleSetFileterBySchools}
+                    />
+                </section>
+            </section>
             <SelectSearch
                 type="spell"
                 options={importedSpells
                     .filter(it => !spells.find(spell => spell.name === it.name))
+                    .filter(it => {
+                        let availableLevels = filterByLevels.map(filter => filter.value);
+                        if (availableLevels.length === 0) {
+                            return true;
+                        }
+                        return availableLevels.includes('' + it.level);
+                    })
+                    .filter(it => {
+                        let availableSchools = filterBySchools.map(filter => filter.value);
+                        if (availableSchools.length === 0) {
+                            return true;
+                        }
+                        return availableSchools.includes(it.school);
+                    })
                     .map(it => {
                         return {value: it, label: it.name, color: '#00B8D9'}
                     })}

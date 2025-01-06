@@ -29,7 +29,7 @@ export default function SelectSearch(props) {
     }
 
     return (
-        <form className="form">
+        <form className={props.isSmall ? "form--small" : "form"}>
             <label style={style.label} id="aria-label" htmlFor="aria-example-input">
                 Select a {props.type}
             </label>
@@ -37,6 +37,8 @@ export default function SelectSearch(props) {
                 aria-labelledby="aria-label"
                 inputId="aria-example-input"
                 name="aria-live-color"
+                isMulti={props.isMulti}
+                isClearable={false}
                 value={props.selected}
                 onMenuOpen={onMenuOpen}
                 onMenuClose={onMenuClose}
