@@ -68,3 +68,20 @@
         display: inherit !important;
     }
 }
+
+.modal-body {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 540px) {
+
+    .modal-body {
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+}

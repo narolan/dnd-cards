@@ -1,7 +1,7 @@
 import {faEye, faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SpellCardV2 = ({spell, school}) => {
+const SpellCardV2 = ({spell, school, backgroundColor, innerBackgroundColor, textColor}) => {
     function getComponents(components) {
         let componentString = [];
         if (components.v) {
@@ -50,13 +50,13 @@ const SpellCardV2 = ({spell, school}) => {
                 // height: "100%",
                 border: "1px solid black",
                 borderRadius: "10px",
-                backgroundColor: "#86211b",
-                color: "#f1e688"
+                backgroundColor: backgroundColor,
+                color: textColor,
             }}
         >
             <section style={{padding: "5px"}}>
                 <section style={{
-                    backgroundColor: "#333333",
+                    backgroundColor: innerBackgroundColor,
                     borderRadius: "10px",
                     display: "grid",
                     gridTemplateColumns: "1fr 5fr"
@@ -75,7 +75,7 @@ const SpellCardV2 = ({spell, school}) => {
                     </h5>
                 </section>
                 <section style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5px", marginBottom: "5px"}}>
-                    <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
+                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                         <h5>Casting Time</h5>
                         <p>
                             {
@@ -85,7 +85,7 @@ const SpellCardV2 = ({spell, school}) => {
                             }
                         </p>
                     </section>
-                    <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
+                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                         <h5>Range</h5>
                         <p>
                             {
@@ -100,7 +100,7 @@ const SpellCardV2 = ({spell, school}) => {
                     </section>
                 </section>
                 <section style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5px", marginBottom: "10px"}}>
-                    <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
+                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                         <h5>Components</h5>
                         <p>
                             {
@@ -108,7 +108,7 @@ const SpellCardV2 = ({spell, school}) => {
                             }
                         </p>
                     </section>
-                    <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
+                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                         <h5>Duration</h5>
                         <p>
                             {
@@ -124,7 +124,7 @@ const SpellCardV2 = ({spell, school}) => {
                         </p>
                     </section>
                 </section>
-                <section style={{backgroundColor: "#333333", borderRadius: "10px", textAlign: "center"}}>
+                <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                     {
                         !!spell.components.m ?
                             <p style={{textAlign: "left", paddingLeft: "5px"}}>
@@ -155,7 +155,7 @@ const SpellCardV2 = ({spell, school}) => {
                             <section>
                                 <h5 style={{textAlign: "center"}}>At Higher Levels</h5>
                             </section>
-                            <section style={{backgroundColor: "#333333", borderRadius: "10px"}}>
+                            <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px"}}>
                                 <p style={{textAlign: "left", paddingLeft: "5px"}}>
                                     {
                                         spell.entriesHigherLevel

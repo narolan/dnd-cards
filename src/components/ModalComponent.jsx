@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import * as pdfService from "../services/pdfService.jsx";
 
-const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update", generatePdf, generatePdfName}) => {
+const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update", generatePdf, generatePdfName, colorPickers}) => {
 
     const [show, setShow] = useState(false);
 
@@ -27,8 +27,9 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
                         {titleHtml}
                     </Modal.Title>
                 </Modal.Header>-
-                <Modal.Body style={{ margin: "auto" }}>
+                <Modal.Body className="modal-body">
                     {bodyHtml}
+                    {!!colorPickers ? colorPickers : null}
                 </Modal.Body>
                 <Modal.Footer>
                     {

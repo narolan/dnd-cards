@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import ModalComponent from "../../components/ModalComponent";
 import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
 import SpellCardV2 from "./SpellCardV2";
+import {HexColorPicker} from "react-colorful";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
+
+    const [backgroundColor, setBackgroundColor] = useState("#86211b");
+    const [innerBackgroundColor, setInnerBackgroundColor] = useState("#333333");
+    const [textColor, setTextColor] = useState("#f1e688");
 
     const spellLevel = (spell) => {
         if (spell.level === 0) {
@@ -78,15 +83,27 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                         titleHtml={getTitleHtml(spell)}
                                         icon={faEye}
                                     />
-                                    {/*<ModalComponent*/}
-                                    {/*    bodyHtml={<SpellCard school={getSchool(spell.school)} spell={spell}/>}*/}
-                                    {/*    titleHtml={getTitleHtml(spell)}*/}
-                                    {/*    generatePdf={true}*/}
-                                    {/*    generatePdfName={spell.name.replaceAll(" ", "_")}*/}
-                                    {/*    icon={faPrint}*/}
-                                    {/*/>*/}
                                     <ModalComponent
-                                        bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell}/>}
+                                        bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell} backgroundColor={backgroundColor} innerBackgroundColor={innerBackgroundColor} textColor={textColor}/>}
+                                        colorPickers={
+                                            <section>
+                                                <h3>Background color</h3>
+                                                <HexColorPicker
+                                                    color={backgroundColor}
+                                                    onChange={(color) => setBackgroundColor(color)}
+                                                />
+                                                <h3>Inner background color</h3>
+                                                <HexColorPicker
+                                                    color={innerBackgroundColor}
+                                                    onChange={(color) => setInnerBackgroundColor(color)}
+                                                />
+                                                <h3>Text color</h3>
+                                                <HexColorPicker
+                                                    color={textColor}
+                                                    onChange={(color) => setTextColor(color)}
+                                                />
+                                            </section>
+                                        }
                                         titleHtml={getTitleHtml(spell)}
                                         generatePdf={true}
                                         generatePdfName={spell.name.replaceAll(" ", "_")}
