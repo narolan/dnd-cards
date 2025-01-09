@@ -5,6 +5,7 @@ import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
 import SpellCardV2 from "./SpellCardV2";
 import {HexColorPicker} from "react-colorful";
+import Checkbox from "../../components/CheckBox";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
 
@@ -12,10 +13,59 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
     const [innerBackgroundColor, setInnerBackgroundColor] = useState("#333333");
     const [textColor, setTextColor] = useState("#f1e688");
 
-    const resetColors = () => {
+    const resetAttributes = () => {
         setBackgroundColor("#86211b");
         setInnerBackgroundColor("#333333");
         setTextColor("#f1e688");
+        setUseName(true);
+        setUseLevel(true);
+        setUseCastingTime(true);
+        setUseRange(true);
+        setUseComponents(true);
+        setUseDuration(true);
+        setUseEntries(true);
+        setUseEntriesHigherLevel(true);
+    }
+
+    const [useName, setUseName] = useState(true);
+    const [useLevel, setUseLevel] = useState(true);
+    const [useCastingTime, setUseCastingTime] = useState(true);
+    const [useRange, setUseRange] = useState(true);
+    const [useComponents, setUseComponents] = useState(true);
+    const [useDuration, setUseDuration] = useState(true);
+    const [useEntries, setUseEntries] = useState(true);
+    const [useEntriesHigherLevel, setUseEntriesHigherLevel] = useState(true);
+
+    const handleSetUseName = () => {
+        setUseName(!useName);
+    }
+
+    const handleSetUseLevel = () => {
+        setUseLevel(!useLevel);
+    }
+
+    const handleSetUseCastingTime = () => {
+        setUseCastingTime(!useCastingTime);
+    }
+
+    const handleSetUseRange = () => {
+        setUseRange(!useRange);
+    }
+
+    const handleSetUseComponents = () => {
+        setUseComponents(!useComponents);
+    }
+
+    const handleSetUseDuration = () => {
+        setUseDuration(!useDuration);
+    }
+
+    const handleSetUseEntries = () => {
+        setUseEntries(!useEntries);
+    }
+
+    const handleSetUseEntriesHigherLevel = () => {
+        setUseEntriesHigherLevel(!useEntriesHigherLevel);
     }
 
     const spellLevel = (spell) => {
@@ -90,7 +140,27 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                         icon={faEye}
                                     />
                                     <ModalComponent
-                                        bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell} backgroundColor={backgroundColor} innerBackgroundColor={innerBackgroundColor} textColor={textColor}/>}
+                                        bodyHtml={
+                                            <SpellCardV2
+                                                school={getSchool(spell.school)}
+                                                spell={spell}
+                                                backgroundColor={backgroundColor}
+                                                innerBackgroundColor={innerBackgroundColor}
+                                                textColor={textColor}
+                                                selectors={
+                                                    {
+                                                        useName,
+                                                        useLevel,
+                                                        useCastingTime,
+                                                        useRange,
+                                                        useComponents,
+                                                        useDuration,
+                                                        useEntries,
+                                                        useEntriesHigherLevel
+                                                    }
+                                                }
+                                            />
+                                        }
                                         colorPickers={
                                             <section>
                                                 <h2>Color Picker</h2>
@@ -111,7 +181,22 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                                 />
                                             </section>
                                         }
-                                        resetColors={resetColors}
+                                        resetAttributes={resetAttributes}
+                                        boxSelectors={
+                                            <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+                                                <Checkbox value={useName} label={"Name"} onChange={handleSetUseName}/>
+                                                <Checkbox value={useLevel} label={"Level"} onChange={handleSetUseLevel}/>
+                                                <Checkbox value={useCastingTime} label={"Casting Time"} onChange={handleSetUseCastingTime}/>
+                                                <Checkbox value={useRange} label={"Range"} onChange={handleSetUseRange}/>
+                                                <Checkbox value={useComponents} label={"Components"} onChange={handleSetUseComponents}/>
+                                                <Checkbox value={useDuration} label={"Duration"} onChange={handleSetUseDuration}/>
+                                                <Checkbox value={useEntries} label={"Entries"} onChange={handleSetUseEntries}/>
+                                                <Checkbox value={useEntriesHigherLevel} label={"Entries Higher Level"} onChange={handleSetUseEntriesHigherLevel}/>
+                                            </section>
+                                        }
+                                        selectors={
+                                            useName
+                                        }
                                         titleHtml={getTitleHtml(spell)}
                                         generatePdf={true}
                                         generatePdfName={spell.name.replaceAll(" ", "_")}

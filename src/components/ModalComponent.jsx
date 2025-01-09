@@ -13,7 +13,8 @@ const ModalComponent = ({
                             generatePdf,
                             generatePdfName,
                             colorPickers,
-                            resetColors
+                            resetAttributes,
+                            boxSelectors
                         }) => {
 
     const [show, setShow] = useState(false);
@@ -33,7 +34,7 @@ const ModalComponent = ({
             </Button>
             <Modal show={show} onHide={() => {
                 handleClose();
-                !!resetColors() ? resetColors() : null;
+                !!resetAttributes() ? resetAttributes() : null;
             }} fullscreen={true}>
                 <Modal.Header closeButton>
                     <Modal.Title>
@@ -43,6 +44,9 @@ const ModalComponent = ({
                 <Modal.Body className="modal-body">
                     {bodyHtml}
                     {!!colorPickers ? colorPickers : null}
+                    <section style={{ gridColumnStart: "span 2" }}>
+                        {!!boxSelectors ? boxSelectors : null}
+                    </section>
                 </Modal.Body>
                 <Modal.Footer>
                     {
@@ -52,8 +56,8 @@ const ModalComponent = ({
                                 onClick={
                                     () => {
                                         document.getElementById(action).click();
-                                        !!resetColors() ? resetColors() : null
                                         setShow(false);
+                                        !!resetAttributes() ? resetAttributes() : null
                                     }
                                 }
                             >
@@ -79,7 +83,7 @@ const ModalComponent = ({
                             :
                             null
                     }
-                    <Button variant="secondary" onClick={() => { handleClose(); !!resetColors() ? resetColors() : null }}>Close</Button>
+                    <Button variant="secondary" onClick={() => { handleClose(); !!resetAttributes() ? resetAttributes() : null }}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,7 +1,7 @@
 import {faEye, faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SpellCardV2 = ({spell, school, backgroundColor, innerBackgroundColor, textColor}) => {
+const SpellCardV2 = ({spell, school, backgroundColor, innerBackgroundColor, textColor, selectors}) => {
     function getComponents(components) {
         let componentString = [];
         if (components.v) {
@@ -42,12 +42,19 @@ const SpellCardV2 = ({spell, school, backgroundColor, innerBackgroundColor, text
         return false;
     }
 
+    function getSpellLevel(spell) {
+        if (spell.level === 0) {
+            return school + " Cantrip";
+        }
+        return `Level ${spell.level} ${school}`;
+    }
+
     return (
         <article
             id="cardId"
             style={{
                 width: "300px",
-                // height: "100%",
+                height: "fit-content",
                 border: "1px solid black",
                 borderRadius: "10px",
                 backgroundColor: backgroundColor,
@@ -62,95 +69,147 @@ const SpellCardV2 = ({spell, school, backgroundColor, innerBackgroundColor, text
                     gridTemplateColumns: "1fr 5fr"
                 }}>
                     <section style={{backgroundColor: "white", width: "50px", height: "50px", borderRadius: "50px"}}>
-                        <img alt="" style={{display: "block", position: "relative", top: "10px", left: "10px"}} width="30px"
+                        <img alt="" style={{display: "block", position: "relative", top: "10px", left: "10px"}}
+                             width="30px"
                              height="30px" src={"https://narolan.github.io/dnd-cards/" + school + ".png"}/>
                     </section>
-                    <h2 style={{textAlign: "center"}}>{spell.name}</h2>
+                    {
+                        selectors.useName ? <h2 style={{textAlign: "center"}}>{spell.name}</h2> : null
+                    }
                 </section>
-                <section>
-                    <h5 style={{textAlign: "center"}}>
-                        {spell.level > 0 && `Level ${spell.level} `}
-                        {school}
-                        {spell.level === 0 && " cantrip"}
-                    </h5>
-                </section>
+                {
+                    selectors.useLevel ?
+                        <section>
+                            <h5 style={{textAlign: "center"}}>
+                                {getSpellLevel(spell)}
+                            </h5>
+                        </section>
+                        : null
+                }
                 <section style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5px", marginBottom: "5px"}}>
-                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
-                        <h5>Casting Time</h5>
-                        <p>
-                            {
-                                spell.time.map(numberUnit => {
-                                    return numberUnit.number + " " + numberUnit.unit
-                                }).join(', ')
-                            }
-                        </p>
-                    </section>
-                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
-                        <h5>Range</h5>
-                        <p>
-                            {
-                                spell.range.type === "special" ?
-                                    "special"
-                                    :
-                                    (spell.range.distance.type === "self" || spell.range.distance.type === "touch" ?
-                                        spell.range.distance.type
-                                        : spell.range.distance.amount + " " + spell.range.distance.type)
-                            }
-                        </p>
-                    </section>
+                    {
+                        selectors.useCastingTime ?
+                            <section style={{
+                                backgroundColor: innerBackgroundColor,
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                gridColumnStart: selectors.useRange ? "1" : "span 2"
+                            }}>
+                                <h5>Casting Time</h5>
+                                <p>
+                                    {
+                                        spell.time.map(numberUnit => {
+                                            return numberUnit.number + " " + numberUnit.unit
+                                        }).join(', ')
+                                    }
+                                </p>
+                            </section>
+                            : null
+                    }
+                    {
+                        selectors.useRange ?
+                            <section style={{
+                                backgroundColor: innerBackgroundColor,
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                gridColumnStart: selectors.useCastingTime ? "2" : "span 2"
+                            }}>
+                                <h5>Range</h5>
+                                <p>
+                                    {
+                                        spell.range.type === "special" ?
+                                            "special"
+                                            :
+                                            (spell.range.distance.type === "self" || spell.range.distance.type === "touch" ?
+                                                spell.range.distance.type
+                                                : spell.range.distance.amount + " " + spell.range.distance.type)
+                                    }
+                                </p>
+                            </section>
+                            : null
+                    }
                 </section>
                 <section style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5px", marginBottom: "10px"}}>
-                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
-                        <h5>Components</h5>
-                        <p>
+                    {
+                        selectors.useComponents ?
+                            <section style={{
+                                backgroundColor: innerBackgroundColor,
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                gridColumnStart: selectors.useDuration ? "1" : "span 2"
+                            }}>
+                                <h5>Components</h5>
+                                <p>
+                                    {
+                                        getComponents(spell.components)
+                                    }
+                                </p>
+                            </section>
+                            : null
+                    }
+                    {
+                        selectors.useDuration ?
+                            <section style={{
+                                backgroundColor: innerBackgroundColor,
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                gridColumnStart: selectors.useComponents ? "2" : "span 2"
+                            }}>
+                                <h5>Duration</h5>
+                                <p>
+                                    {
+                                        spell.duration.map(dur => getDuration(dur))
+                                            .join(', ')
+                                    }
+                                    {
+                                        spell.duration.filter(dur => dur.concentration).length > 0 ?
+                                            <FontAwesomeIcon icon={faEye}/>
+                                            :
+                                            null
+                                    }
+                                </p>
+                            </section>
+                            : null
+                    }
+                </section>
+                {
+                    selectors.useEntries ?
+                        <section
+                            style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
                             {
-                                getComponents(spell.components)
-                            }
-                        </p>
-                    </section>
-                    <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
-                        <h5>Duration</h5>
-                        <p>
-                            {
-                                spell.duration.map(dur => getDuration(dur))
-                                    .join(', ')
-                            }
-                            {
-                                spell.duration.filter(dur => dur.concentration).length > 0 ?
-                                    <FontAwesomeIcon icon={faEye}/>
+                                !!spell.components.m ?
+                                    <p style={{textAlign: "left", paddingLeft: "5px"}}>
+                                        Material: {isConsumed(spell.components.m) ? <><FontAwesomeIcon
+                                        icon={faSquareCheck}/> Consumed </> : null}
+                                        {getMaterials(spell.components.m)}
+                                    </p>
                                     :
                                     null
                             }
-                        </p>
-                    </section>
-                </section>
-                <section style={{backgroundColor: innerBackgroundColor, borderRadius: "10px", textAlign: "center"}}>
-                    {
-                        !!spell.components.m ?
-                            <p style={{textAlign: "left", paddingLeft: "5px"}}>
-                                Material: {isConsumed(spell.components.m) ? <><FontAwesomeIcon icon={faSquareCheck} /> Consumed </> : null}
-                                {getMaterials(spell.components.m)}
+                            <p style={{
+                                textAlign: "left",
+                                paddingLeft: "5px",
+                                wordWrap: "break-word",
+                                overflowWrap: "break-word"
+                            }}>
+                                {
+                                    spell.entries
+                                        .map(entry => {
+                                            if (entry instanceof Object && !!entry.entries) {
+                                                return entry.name + ": " + entry.entries.join(' ');
+                                            } else if (entry instanceof Object && entry.type === 'list') {
+                                                return entry.items.join('\r\n');
+                                            }
+                                            return entry;
+                                        })
+                                        .join(' ')
+                                }
                             </p>
-                            :
-                            null
-                    }
-                    <p style={{ textAlign: "left", paddingLeft: "5px", wordWrap: "break-word", overflowWrap: "break-word" }}>
-                        {
-                            spell.entries
-                                .map(entry => {
-                                    if (entry instanceof Object && !!entry.entries) {
-                                        return entry.name + ": " + entry.entries.join(' ');
-                                    } else if (entry instanceof Object && entry.type === 'list') {
-                                        return entry.items.join('\r\n');
-                                    }
-                                    return entry;
-                                })
-                                .join(' ')
-                        }
-                    </p>
-                </section>
+                        </section>
+                        : null
+                }
                 {
-                    !!spell.entriesHigherLevel ?
+                    selectors.useEntriesHigherLevel && !!spell.entriesHigherLevel ?
                         <>
                             <section>
                                 <h5 style={{textAlign: "center"}}>At Higher Levels</h5>
