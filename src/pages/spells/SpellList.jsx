@@ -12,6 +12,12 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
     const [innerBackgroundColor, setInnerBackgroundColor] = useState("#333333");
     const [textColor, setTextColor] = useState("#f1e688");
 
+    const resetColors = () => {
+        setBackgroundColor("#86211b");
+        setInnerBackgroundColor("#333333");
+        setTextColor("#f1e688");
+    }
+
     const spellLevel = (spell) => {
         if (spell.level === 0) {
             return "cantrip";
@@ -87,6 +93,7 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                         bodyHtml={<SpellCardV2 school={getSchool(spell.school)} spell={spell} backgroundColor={backgroundColor} innerBackgroundColor={innerBackgroundColor} textColor={textColor}/>}
                                         colorPickers={
                                             <section>
+                                                <h2>Color Picker</h2>
                                                 <h3>Background color</h3>
                                                 <HexColorPicker
                                                     color={backgroundColor}
@@ -104,6 +111,7 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                                 />
                                             </section>
                                         }
+                                        resetColors={resetColors}
                                         titleHtml={getTitleHtml(spell)}
                                         generatePdf={true}
                                         generatePdfName={spell.name.replaceAll(" ", "_")}

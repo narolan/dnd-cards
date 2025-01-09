@@ -31,7 +31,7 @@ export default function SelectSearch(props) {
     return (
         <form className={props.isSmall ? "form--small" : "form"}>
             <label style={style.label} id="aria-label" htmlFor="aria-example-input">
-                Select a {props.type}
+                {props.type === "spell" || props.type === "monster" ? "Add " : "Select "} a {props.type}
             </label>
             <Select
                 aria-labelledby="aria-label"

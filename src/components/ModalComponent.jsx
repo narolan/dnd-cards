@@ -4,7 +4,17 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import * as pdfService from "../services/pdfService.jsx";
 
-const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update", generatePdf, generatePdfName, colorPickers}) => {
+const ModalComponent = ({
+                            icon,
+                            titleHtml,
+                            bodyHtml,
+                            action,
+                            actionText = "Update",
+                            generatePdf,
+                            generatePdfName,
+                            colorPickers,
+                            resetColors
+                        }) => {
 
     const [show, setShow] = useState(false);
 
@@ -21,7 +31,10 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
             >
                 <FontAwesomeIcon icon={icon}/>
             </Button>
-            <Modal show={show} onHide={handleClose} fullscreen={true}>
+            <Modal show={show} onHide={() => {
+                handleClose();
+                !!resetColors() ? resetColors() : null;
+            }} fullscreen={true}>
                 <Modal.Header closeButton>
                     <Modal.Title>
                         {titleHtml}
@@ -39,6 +52,7 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
                                 onClick={
                                     () => {
                                         document.getElementById(action).click();
+                                        !!resetColors() ? resetColors() : null
                                         setShow(false);
                                     }
                                 }
@@ -54,7 +68,9 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
                                 <Button
                                     variant="primary"
                                     onClick={
-                                        () => pdfService.generatePDF("cardId", generatePdfName)
+                                        () => {
+                                            pdfService.generatePDF("cardId", generatePdfName);
+                                        }
                                     }
                                 >
                                     Generate PDF
@@ -63,7 +79,7 @@ const ModalComponent = ({icon, titleHtml, bodyHtml, action, actionText = "Update
                             :
                             null
                     }
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="secondary" onClick={() => { handleClose(); !!resetColors() ? resetColors() : null }}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>
