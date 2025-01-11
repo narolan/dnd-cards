@@ -4,7 +4,6 @@ import ModalComponent from "../../components/ModalComponent";
 import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
 import SpellCardV2 from "./SpellCardV2";
-import {HexColorPicker} from "react-colorful";
 import Checkbox from "../../components/CheckBox";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
@@ -165,19 +164,22 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                             <section>
                                                 <h2>Color Picker</h2>
                                                 <h3>Background color</h3>
-                                                <HexColorPicker
-                                                    color={backgroundColor}
-                                                    onChange={(color) => setBackgroundColor(color)}
+                                                <input
+                                                    type="color"
+                                                    value={backgroundColor}
+                                                    onChange={(event) => setBackgroundColor(event.target.value)}
                                                 />
                                                 <h3>Inner background color</h3>
-                                                <HexColorPicker
-                                                    color={innerBackgroundColor}
-                                                    onChange={(color) => setInnerBackgroundColor(color)}
+                                                <input
+                                                    type="color"
+                                                    value={innerBackgroundColor}
+                                                    onChange={(event) => setInnerBackgroundColor(event.target.value)}
                                                 />
                                                 <h3>Text color</h3>
-                                                <HexColorPicker
-                                                    color={textColor}
-                                                    onChange={(color) => setTextColor(color)}
+                                                <input
+                                                    type="color"
+                                                    value={textColor}
+                                                    onChange={(event) => setTextColor(event.target.value)}
                                                 />
                                             </section>
                                         }
