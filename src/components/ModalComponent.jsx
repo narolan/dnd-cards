@@ -44,7 +44,8 @@ const ModalComponent = ({
                 <Modal.Body className="modal-body">
                     {bodyHtml}
                     {!!colorPickers ? colorPickers : null}
-                    <section style={{ gridColumnStart: "span 2" }}>
+                    <section className="attributes">
+                        <h3>Select attributes</h3>
                         {!!boxSelectors ? boxSelectors : null}
                     </section>
                 </Modal.Body>
@@ -83,7 +84,10 @@ const ModalComponent = ({
                             :
                             null
                     }
-                    <Button variant="secondary" onClick={() => { handleClose(); !!resetAttributes() ? resetAttributes() : null }}>Close</Button>
+                    <Button variant="secondary" onClick={() => {
+                        handleClose();
+                        !!resetAttributes() ? resetAttributes() : null
+                    }}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>
