@@ -22,7 +22,7 @@ const Navbar = () => {
                     Spells
                 </NavLink>
                 <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other Apps" id="nav-dropdown">
-                    <NavDropdown.Item href="https://smarinade.github.io/looters" target="_blank">Looters</NavDropdown.Item>
+                    <NavDropdown.Item href={BASE_URL + "#/looters"}>Looters</NavDropdown.Item>
                 </NavDropdown>
             </NavMenu>
             <NavMenu className="justify-content-end mobile" style={{ marginRight: ".5rem" }}>

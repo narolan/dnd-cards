@@ -8,6 +8,7 @@ import {
 import Home from "./pages/Home.jsx";
 import Monsters from "./pages/monsters/Monsters.jsx";
 import Spells from "./pages/spells/Spells.jsx";
+import Looters from "./pages/looters/Looters.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import version from "../package.json";
 
@@ -29,6 +30,10 @@ function App() {
                     <Route
                         path="/spells"
                         element={<Spells/>}
+                    />
+                    <Route
+                        path="/looters"
+                        element={<Looters/>}
                     />
                 </Routes>
             </Router>
