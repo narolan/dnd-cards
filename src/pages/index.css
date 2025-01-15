@@ -185,6 +185,29 @@
 }
 
 .inner-application {
-    height: calc(100vh - 74px);
-    width: 100vw;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: calc(90vh - 74px);
+    width: 90vw;
+    border: .5rem solid #000;
+}
+
+.frameBox {
+    width: 90vw;
+    height: 80vh;
+    background-color: #fff;
+    position: absolute;
+    top: calc(10% + 12px);
+    bottom: 0;
+    right: 0;
+    left: 5%;
+    overflow-y: hidden;
+    display: flex;
+    border: .5rem solid rgb(134, 33, 27);
+}
+.frameBox iframe{
+    width: 100%;
+    height: calc(100% + 29px);
+    margin: 0;
+    overflow: hidden;
 }

@@ -1,6 +1,8 @@
 const Looters = () => {
     return (
-        <iframe className="inner-application" src={"https://smarinade.github.io/looters/"}/>
+        <div className="frameBox">
+            <iframe src={"https://smarinade.github.io/looters/"}/>
+        </div>
     )
 }
 
