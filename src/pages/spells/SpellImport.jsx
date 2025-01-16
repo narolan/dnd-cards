@@ -29,12 +29,24 @@ const schools = [
     { value: "I", label: "Illusion"}
 ];
 
+const classes = [
+    { value: "Bard", label: "Bard"},
+    { value: "Cleric", label: "Cleric"},
+    { value: "Druid", label: "Druid"},
+    { value: "Paladin", label: "Paladin"},
+    { value: "Ranger", label: "Ranger"},
+    { value: "Sorcerer", label: "Sorcerer"},
+    { value: "Warlock", label: "Sorcerer"},
+    { value: "Wizard", label: "Sorcerer"},
+]
+
 
 const SpellImport = ({spells, setSpells}) => {
 
     const [selectedImportedSpell, setSelectedImportedSpell] = useState({});
     const [filterByLevels, setFilterByLevels] = useState([]);
     const [filterBySchools, setFilterBySchools] = useState([]);
+    const [filterByClasses, setFilterByClasses] = useState("");
 
     const handleSetSelectedImportedSpell = (spell) => {
         if (!!spell?.value) {
@@ -48,6 +60,10 @@ const SpellImport = ({spells, setSpells}) => {
 
     const handleSetFileterBySchools = (school) => {
         setFilterBySchools(school);
+    }
+
+    const handleSetFileterByClasses = (aClass) => {
+        setFilterByClasses(aClass);
     }
 
     const addImportedSpell = (event) => {
@@ -84,6 +100,14 @@ const SpellImport = ({spells, setSpells}) => {
                         selected={filterBySchools}
                         action={handleSetFileterBySchools}
                     />
+                    <SelectSearch
+                        type="classes"
+                        isMulti={false}
+                        isSmall={true}
+                        options={classes}
+                        selected={filterByClasses}
+                        action={handleSetFileterByClasses}
+                    />
                 </section>
             </section>
             <SelectSearch
@@ -103,6 +127,13 @@ const SpellImport = ({spells, setSpells}) => {
                             return true;
                         }
                         return availableSchools.includes(it.school);
+                    })
+                    .filter(it => {
+                        let availableClasses = filterByClasses.value;
+                        if (!availableClasses) {
+                            return true;
+                        }
+                        return it.classes.includes(availableClasses);
                     })
                     .map(it => {
                         return {value: it, label: it.name, color: '#00B8D9'}
