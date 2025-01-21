@@ -36,8 +36,8 @@ const classes = [
     { value: "Paladin", label: "Paladin"},
     { value: "Ranger", label: "Ranger"},
     { value: "Sorcerer", label: "Sorcerer"},
-    { value: "Warlock", label: "Sorcerer"},
-    { value: "Wizard", label: "Sorcerer"},
+    { value: "Warlock", label: "Warlock"},
+    { value: "Wizard", label: "Wizard"},
 ]
 
 
