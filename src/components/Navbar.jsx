@@ -15,11 +15,11 @@ const Navbar = () => {
                 <NavLink to="/" className="home">
                     <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
                 </NavLink>
-                <NavLink to="/monsters" className="desktop">
-                    Monsters
-                </NavLink>
                 <NavLink to="/spells" className="desktop">
                     Spells
+                </NavLink>
+                <NavLink to="/monsters" className="desktop">
+                    Monsters
                 </NavLink>
                 <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other Apps" id="nav-dropdown">
                     <NavDropdown.Item href={BASE_URL + "#/looters"}>Looters</NavDropdown.Item>
@@ -31,8 +31,8 @@ const Navbar = () => {
                     id="collasible-nav-dropdown"
                     style={{ color: 'white' }}
                 >
-                    <NavDropdown.Item href={BASE_URL + "#/monsters"}>Monsters</NavDropdown.Item>
                     <NavDropdown.Item href={BASE_URL + "#/spells"}>Spells</NavDropdown.Item>
+                    <NavDropdown.Item href={BASE_URL + "#/monsters"}>Monsters</NavDropdown.Item>
                     <NavDropdown.Divider/>
                     <NavDropdown.Item
                         href="https://smarinade.github.io/looters" target="_blank"

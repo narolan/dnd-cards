@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import Button from "react-bootstrap/Button";
 import ModalComponent from "../../components/ModalComponent";
-import {faEye, faPrint} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
 import SpellCardV2 from "./SpellCardV2";
 import Checkbox from "../../components/CheckBox";
+import CustomPrimaryButton from "../../components/CustomPrimaryButton";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const SpellList = ({spells, setSpells, removeSpell}) => {
 
@@ -132,7 +133,7 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                 <p title={spell.name} className="text-grid text-italic">{spell.name}</p>
                                 <p title={getSchool(spell.school)} className="text-grid">{spell.school}</p>
                                 <p title={spell.school} className="text-grid">{spellLevel(spell)}</p>
-                                <section>
+                                <section style={{ alignSelf: "center" }}>
                                     <ModalComponent
                                         bodyHtml={getBodyHtml(spell, true)}
                                         titleHtml={getTitleHtml(spell)}
@@ -204,13 +205,12 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                                         generatePdfName={spell.name.replaceAll(" ", "_")}
                                         icon={faPrint}
                                     />
-                                    <Button
-                                        className="button-small mr-0-5"
+                                    <CustomPrimaryButton
+                                        extraClasses="button-small mr-0-5"
                                         variant="outline-danger"
                                         onClick={() => removeSpell(spell.id)}
-                                    >
-                                        &#935;
-                                    </Button>
+                                        text={<FontAwesomeIcon icon={faTrash}/>}
+                                    />
                                 </section>
                             </section>
                         )

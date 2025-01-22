@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import * as pdfService from "../services/pdfService.jsx";
+import CustomPrimaryButton from "./CustomPrimaryButton";
 
 const ModalComponent = ({
                             icon,
@@ -25,13 +26,13 @@ const ModalComponent = ({
 
     return (
         <>
-            <Button
-                className="button-small mr-0-5"
+            <CustomPrimaryButton
+                extraClasses="button-small mr-0-5"
                 variant="outline-primary"
                 onClick={handleShow}
+                text={<FontAwesomeIcon icon={icon}/>}
             >
-                <FontAwesomeIcon icon={icon}/>
-            </Button>
+            </CustomPrimaryButton>
             <Modal show={show} onHide={() => {
                 handleClose();
                 !!resetAttributes() ? resetAttributes() : null;
@@ -52,8 +53,8 @@ const ModalComponent = ({
                 <Modal.Footer>
                     {
                         !!action ?
-                            <Button
-                                variant="primary"
+                            <CustomPrimaryButton
+                                text={actionText}
                                 onClick={
                                     () => {
                                         document.getElementById(action).click();
@@ -62,8 +63,8 @@ const ModalComponent = ({
                                     }
                                 }
                             >
-                                {actionText}
-                            </Button>
+
+                            </CustomPrimaryButton>
                             :
                             null
                     }

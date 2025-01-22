@@ -1,9 +1,9 @@
 import SelectSearch from "../../components/SelectSearch";
-import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import * as uuid from "uuid";
 import {importedSpells} from "./importedSpells";
 import * as storageService from "../../services/storageService";
+import CustomPrimaryButton from "../../components/CustomPrimaryButton";
 
 const levelOptions = [
     {value: "0", label: "0"},
@@ -145,14 +145,16 @@ const SpellImport = ({spells, setSpells}) => {
                     })}
                 action={handleSetSelectedImportedSpell}
             />
-            <Button disabled={!selectedImportedSpell.name}
+            <CustomPrimaryButton
+                    disabled={!selectedImportedSpell.name}
                     variant="primary"
                     type="submit"
-                    className="form-button margin-bottom"
+                    extraClasses="margin-bottom"
                     onClick={addImportedSpell}
+                    text="Add Spell"
             >
-                Add
-            </Button>
+
+            </CustomPrimaryButton>
         </article>
     );
 }

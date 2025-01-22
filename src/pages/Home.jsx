@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './index.css';
-import Button from "react-bootstrap/Button";
 import * as storageService from "../services/storageService";
 import Form from "react-bootstrap/Form";
+import CustomPrimaryButton from "../components/CustomPrimaryButton";
 
 const Home = () => {
 
@@ -65,8 +65,6 @@ const Home = () => {
             <section className="block">
                 <p className="text">
                     This work includes material taken from the System Reference Document 5.1 (“SRD 5.1”) by Wizards of the Coast LLC and available at <a href={"https://dnd.wizards.com/resources/systems-reference-document"}>https://dnd.wizards.com/resources/systems-reference-document</a>.
-                </p>
-                <p className="text">
                     The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at <a href={"https://creativecommons.org/licenses/by/4.0/legalcode"}>https://creativecommons.org/licenses/by/4.0/legalcode</a>.
                 </p>
             </section>
@@ -80,12 +78,10 @@ const Home = () => {
                 <h4>Export/Import</h4>
                 <p className="text">In order to sync data between devices we currently support exporting and importing data.</p>
                 <p className="text">Simply push the export button. This will generate a hashed version of your data. Go to your other device, paste the hashed text and press 'Import'.</p>
-                <Button
-                    variant="primary"
-                    onClick={getDataAsBase64}
-                >
-                    Export
-                </Button>
+                <CustomPrimaryButton
+                    onClick={() => getDataAsBase64()}
+                    text={"Export"}
+                />
                 <Form style={{ width: '60%', textAlign: "center" }}>
                     <Form.Group className="mb-3" style={{ textAlign: "left" }} controlId="importData">
                         <Form.Label column="lg">Import</Form.Label>
@@ -96,11 +92,10 @@ const Home = () => {
                             onChange={handleImportChange}
                         />
                     </Form.Group>
-                    <Button
+                    <CustomPrimaryButton
                         onClick={importDataIntoStorage}
-                    >
-                        Import
-                    </Button>
+                        text={"Import"}
+                    />
                 </Form>
             </section>
         </article>

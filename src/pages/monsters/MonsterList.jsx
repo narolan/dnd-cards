@@ -1,8 +1,9 @@
-import Button from "react-bootstrap/Button";
 import React from "react";
-import {faEye, faPencil} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faPencil, faTrash} from "@fortawesome/free-solid-svg-icons";
 import ModalComponent from "../../components/ModalComponent";
 import MonsterForm from "./MonsterForm";
+import CustomPrimaryButton from "../../components/CustomPrimaryButton";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const MonsterList = (props) => {
 
@@ -46,7 +47,7 @@ const MonsterList = (props) => {
                                  src={monster.img_url}/>
                             <p title={monster.name} className="text-grid text-italic">{monster.name}</p>
                             <p title={monster.meta} className="text-grid">{monster.meta}</p>
-                            <section>
+                            <section style={{ alignSelf: "center" }}>
                                 <ModalComponent
                                     bodyHtml={getBodyHtml(monster, true)}
                                     titleHtml={getTitleHtml(monster)}
@@ -63,13 +64,12 @@ const MonsterList = (props) => {
                                         />
                                         : null
                                 }
-                                <Button
-                                    className="button-small mr-0-5"
+                                <CustomPrimaryButton
+                                    extraClasses="button-small mr-0-5"
                                     variant="outline-danger"
+                                    text={<FontAwesomeIcon icon={faTrash}/>}
                                     onClick={() => props.removeMonster(monster.id)}
-                                >
-                                    &#935;
-                                </Button>
+                                />
                             </section>
                         </div>
                     )

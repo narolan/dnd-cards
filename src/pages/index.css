@@ -1,3 +1,8 @@
+:root {
+    --bs-btn-bg: #86211b !important;
+    --bs-btn-disabled-bg: #86211b !important;
+}
+
 .title {
     padding-top: 1rem;
     display: flex;
@@ -14,6 +19,7 @@
 
 .text {
     margin: 2px 1rem;
+    text-align: center;
 }
 
 .text-not-found {
