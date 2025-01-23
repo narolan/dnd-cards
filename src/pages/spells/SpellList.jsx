@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import ModalComponent from "../../components/ModalComponent";
-import {faEye, faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
-import SpellForm from "./SpellForm";
+import {faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
 import SpellCard from "./SpellCard";
 import Checkbox from "../../components/CheckBox";
 import CustomPrimaryButton from "../../components/CustomPrimaryButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SpellList = ({spells, setSpells, removeSpell}) => {
+const SpellList = ({spells, removeSpell}) => {
 
     const [backgroundColor, setBackgroundColor] = useState("#86211b");
     const [innerBackgroundColor, setInnerBackgroundColor] = useState("#333333");
@@ -85,19 +84,6 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
             return spell.level + "th";
         }
     }
-
-    function getBodyHtml(spell, isReadOnly) {
-        if (isReadOnly) {
-            return (
-                <fieldset disabled>
-                    <SpellForm spells={spells} setSpells={setSpells} spell={spell} readOnly={true}/>
-                </fieldset>
-            );
-        } else {
-            return <p>TODO</p>
-        }
-    }
-
     function getTitleHtml(spell) {
         return <p>{spell.name}</p>;
     }
