@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ModalComponent from "../../components/ModalComponent";
 import {faEye, faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
 import SpellForm from "./SpellForm";
-import SpellCardV2 from "./SpellCardV2";
+import SpellCard from "./SpellCard";
 import Checkbox from "../../components/CheckBox";
 import CustomPrimaryButton from "../../components/CustomPrimaryButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -131,17 +131,12 @@ const SpellList = ({spells, setSpells, removeSpell}) => {
                         return (
                             <section key={spell.id} className={index % 2 === 1 ? "spells lists-uneven" : "spells"}>
                                 <p title={spell.name} className="text-grid text-italic">{spell.name}</p>
-                                <p title={getSchool(spell.school)} className="text-grid">{spell.school}</p>
+                                <p title={getSchool(spell.school)} className="text-grid">{getSchool(spell.school)}</p>
                                 <p title={spell.school} className="text-grid">{spellLevel(spell)}</p>
                                 <section style={{ alignSelf: "center" }}>
                                     <ModalComponent
-                                        bodyHtml={getBodyHtml(spell, true)}
-                                        titleHtml={getTitleHtml(spell)}
-                                        icon={faEye}
-                                    />
-                                    <ModalComponent
                                         bodyHtml={
-                                            <SpellCardV2
+                                            <SpellCard
                                                 school={getSchool(spell.school)}
                                                 spell={spell}
                                                 backgroundColor={backgroundColor}
