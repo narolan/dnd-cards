@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './index.css';
 import * as storageService from "../services/storageService";
 import Form from "react-bootstrap/Form";
-import CustomPrimaryButton from "../components/CustomPrimaryButton";
+import CustomButton from "../components/CustomButton";
 
 const Home = () => {
 
@@ -78,7 +78,7 @@ const Home = () => {
                 <h4>Export/Import</h4>
                 <p className="text">In order to sync data between devices we currently support exporting and importing data.</p>
                 <p className="text">Simply push the export button. This will generate a hashed version of your data. Go to your other device, paste the hashed text and press 'Import'.</p>
-                <CustomPrimaryButton
+                <CustomButton
                     onClick={() => getDataAsBase64()}
                     text={"Export"}
                 />
@@ -92,7 +92,7 @@ const Home = () => {
                             onChange={handleImportChange}
                         />
                     </Form.Group>
-                    <CustomPrimaryButton
+                    <CustomButton
                         onClick={importDataIntoStorage}
                         text={"Import"}
                     />

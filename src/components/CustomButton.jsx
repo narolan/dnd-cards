@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 
-const CustomPrimaryButton = ({text, onClick, extraClasses, variant="flat", disabled=false}) => {
+const CustomButton = ({text, onClick, extraClasses, variant="flat", disabled=false}) => {
     return (
         <>
             <style type="text/css">
@@ -55,4 +55,4 @@ const CustomPrimaryButton = ({text, onClick, extraClasses, variant="flat", disab
     );
 }
 
-export default CustomPrimaryButton;
+export default CustomButton;

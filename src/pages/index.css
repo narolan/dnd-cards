@@ -201,7 +201,7 @@
     left: 5%;
     overflow-y: hidden;
     display: flex;
-    border: .5rem solid rgb(134, 33, 27);
+    border: .5rem solid var(--dnd-red);
 }
 .frameBox iframe{
     width: 100%;

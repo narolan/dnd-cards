@@ -1,7 +1,7 @@
 import {faEye, faSquareCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const SpellCard = ({spell, school, backgroundColor, innerBackgroundColor, textColor, selectors}) => {
+const SpellCard = ({spell, school, backgroundColor, innerBackgroundColor, textColor, selectors, multipleId = ""}) => {
     function getComponents(components) {
         let componentString = [];
         if (components.v) {
@@ -51,7 +51,8 @@ const SpellCard = ({spell, school, backgroundColor, innerBackgroundColor, textCo
 
     return (
         <article
-            id="cardId"
+            key={spell.name}
+            id={"cardId" + multipleId}
             style={{
                 width: "300px",
                 height: "fit-content",

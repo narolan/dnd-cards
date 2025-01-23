@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import * as uuid from "uuid";
 import {importedSpells} from "./importedSpells";
 import * as storageService from "../../services/storageService";
-import CustomPrimaryButton from "../../components/CustomPrimaryButton";
+import CustomButton from "../../components/CustomButton";
 
 const levelOptions = [
     {value: "0", label: "0"},
@@ -145,7 +145,7 @@ const SpellImport = ({spells, setSpells}) => {
                     })}
                 action={handleSetSelectedImportedSpell}
             />
-            <CustomPrimaryButton
+            <CustomButton
                     disabled={!selectedImportedSpell.name}
                     variant="primary"
                     type="submit"
@@ -154,7 +154,7 @@ const SpellImport = ({spells, setSpells}) => {
                     text="Add Spell"
             >
 
-            </CustomPrimaryButton>
+            </CustomButton>
         </article>
     );
 }

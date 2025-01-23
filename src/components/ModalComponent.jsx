@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import * as pdfService from "../services/pdfService.jsx";
-import CustomPrimaryButton from "./CustomPrimaryButton";
+import CustomButton from "./CustomButton";
 
 const ModalComponent = ({
                             icon,
@@ -13,6 +13,7 @@ const ModalComponent = ({
                             actionText = "Update",
                             generatePdf,
                             generatePdfName,
+                            generatePdfMultiple,
                             colorPickers,
                             resetAttributes,
                             boxSelectors
@@ -26,13 +27,13 @@ const ModalComponent = ({
 
     return (
         <>
-            <CustomPrimaryButton
+            <CustomButton
                 extraClasses="button-small mr-0-5"
                 variant="outline-primary"
                 onClick={handleShow}
                 text={<FontAwesomeIcon icon={icon}/>}
             >
-            </CustomPrimaryButton>
+            </CustomButton>
             <Modal show={show} onHide={() => {
                 handleClose();
                 !!resetAttributes() ? resetAttributes() : null;
@@ -45,15 +46,19 @@ const ModalComponent = ({
                 <Modal.Body className="modal-body">
                     {bodyHtml}
                     {!!colorPickers ? colorPickers : null}
-                    <section className="attributes">
-                        <h3>Select attributes</h3>
-                        {!!boxSelectors ? boxSelectors : null}
-                    </section>
+                    {
+                        !!boxSelectors ?
+                            <section className="attributes">
+                                <h3>Select attributes</h3>
+                                {boxSelectors}
+                            </section>
+                            : null
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     {
                         !!action ?
-                            <CustomPrimaryButton
+                            <CustomButton
                                 text={actionText}
                                 onClick={
                                     () => {
@@ -64,7 +69,7 @@ const ModalComponent = ({
                                 }
                             >
 
-                            </CustomPrimaryButton>
+                            </CustomButton>
                             :
                             null
                     }
@@ -75,7 +80,7 @@ const ModalComponent = ({
                                     variant="primary"
                                     onClick={
                                         () => {
-                                            pdfService.generatePDF("cardId", generatePdfName);
+                                            pdfService.generatePDF("cardId", generatePdfName, generatePdfMultiple);
                                         }
                                     }
                                 >

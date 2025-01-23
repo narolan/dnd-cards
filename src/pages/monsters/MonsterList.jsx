@@ -2,7 +2,7 @@ import React from "react";
 import {faEye, faPencil, faTrash} from "@fortawesome/free-solid-svg-icons";
 import ModalComponent from "../../components/ModalComponent";
 import MonsterForm from "./MonsterForm";
-import CustomPrimaryButton from "../../components/CustomPrimaryButton";
+import CustomButton from "../../components/CustomButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const MonsterList = (props) => {
@@ -64,7 +64,7 @@ const MonsterList = (props) => {
                                         />
                                         : null
                                 }
-                                <CustomPrimaryButton
+                                <CustomButton
                                     extraClasses="button-small mr-0-5"
                                     variant="outline-danger"
                                     text={<FontAwesomeIcon icon={faTrash}/>}

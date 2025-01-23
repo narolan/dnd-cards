@@ -1,18 +1,30 @@
 import React, {useState} from "react";
 import ModalComponent from "../../components/ModalComponent";
-import {faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faFolderOpen, faPrint, faTrash} from "@fortawesome/free-solid-svg-icons";
 import SpellCard from "./SpellCard";
 import Checkbox from "../../components/CheckBox";
-import CustomPrimaryButton from "../../components/CustomPrimaryButton";
+import CustomButton from "../../components/CustomButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {v4} from "uuid";
 
 const SpellList = ({spells, removeSpell}) => {
+
+    const [checkedSpells, setCheckedSpells] = useState([]);
+
+    const handleCheckedSpells = (spell) => {
+        if (checkedSpells.includes(spell)) {
+            setCheckedSpells(checkedSpells.filter(item => item !== spell));
+        } else {
+            setCheckedSpells([...checkedSpells, spell]);
+        }
+    }
 
     const [backgroundColor, setBackgroundColor] = useState("#86211b");
     const [innerBackgroundColor, setInnerBackgroundColor] = useState("#333333");
     const [textColor, setTextColor] = useState("#f1e688");
 
     const resetAttributes = () => {
+        setCheckedSpells([]);
         setBackgroundColor("#86211b");
         setInnerBackgroundColor("#333333");
         setTextColor("#f1e688");
@@ -84,6 +96,7 @@ const SpellList = ({spells, removeSpell}) => {
             return spell.level + "th";
         }
     }
+
     function getTitleHtml(spell) {
         return <p>{spell.name}</p>;
     }
@@ -103,13 +116,65 @@ const SpellList = ({spells, removeSpell}) => {
         return schools[school];
     }
 
+    function buildSpellCard(spell, count = "") {
+        return (
+            <SpellCard
+                school={getSchool(spell.school)}
+                spell={spell}
+                backgroundColor={backgroundColor}
+                innerBackgroundColor={innerBackgroundColor}
+                textColor={textColor}
+                multipleId={count}
+                selectors={
+                    {
+                        useName,
+                        useLevel,
+                        useCastingTime,
+                        useRange,
+                        useComponents,
+                        useDuration,
+                        useEntries,
+                        useEntriesHigherLevel
+                    }
+                }
+            />
+        );
+    }
+
     return (
         <article className="block block-header">
             <section className="spells block-header">
                 <p className="text-grid text-bold">Name</p>
                 <p className="text-grid text-bold">School</p>
                 <p className="text-grid text-bold">Level</p>
-                <p className="text-grid text-bold">Action</p>
+                <div className="text-grid text-bold">
+                    Action
+                    {
+                        checkedSpells.length > 0 ?
+                            <section className="desktop" style={{ display: "inline-flex", marginLeft: ".5rem", width: "30px" }}>
+                                <ModalComponent
+                                    bodyHtml={
+                                        <section key={v4()} style={{
+                                            display: "grid",
+                                            gridTemplateColumns: "1fr 1fr 1fr",
+                                            gap: "1rem"
+                                        }}>
+                                            {
+                                                spells.filter(spell => checkedSpells.includes(spell.id))
+                                                    .map(((spell, index) => buildSpellCard(spell, ++index)))
+                                            }
+                                        </section>
+                                    }
+                                    icon={faFolderOpen}
+                                    resetAttributes={resetAttributes}
+                                    generatePdf={true}
+                                    generatePdfName="multiple_spells"
+                                    generatePdfMultiple={checkedSpells.length}
+                                />
+                            </section>
+                            : null
+                    }
+                </div>
             </section>
             {
                 !!spells && !!spells[0]?.id ?
@@ -119,28 +184,10 @@ const SpellList = ({spells, removeSpell}) => {
                                 <p title={spell.name} className="text-grid text-italic">{spell.name}</p>
                                 <p title={getSchool(spell.school)} className="text-grid">{getSchool(spell.school)}</p>
                                 <p title={spell.school} className="text-grid">{spellLevel(spell)}</p>
-                                <section style={{ alignSelf: "center" }}>
+                                <section style={{alignSelf: "center"}}>
                                     <ModalComponent
                                         bodyHtml={
-                                            <SpellCard
-                                                school={getSchool(spell.school)}
-                                                spell={spell}
-                                                backgroundColor={backgroundColor}
-                                                innerBackgroundColor={innerBackgroundColor}
-                                                textColor={textColor}
-                                                selectors={
-                                                    {
-                                                        useName,
-                                                        useLevel,
-                                                        useCastingTime,
-                                                        useRange,
-                                                        useComponents,
-                                                        useDuration,
-                                                        useEntries,
-                                                        useEntriesHigherLevel
-                                                    }
-                                                }
-                                            />
+                                            buildSpellCard(spell)
                                         }
                                         colorPickers={
                                             <section>
@@ -167,15 +214,22 @@ const SpellList = ({spells, removeSpell}) => {
                                         }
                                         resetAttributes={resetAttributes}
                                         boxSelectors={
-                                            <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+                                            <section style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
                                                 <Checkbox value={useName} label={"Name"} onChange={handleSetUseName}/>
-                                                <Checkbox value={useLevel} label={"Level"} onChange={handleSetUseLevel}/>
-                                                <Checkbox value={useCastingTime} label={"Casting Time"} onChange={handleSetUseCastingTime}/>
-                                                <Checkbox value={useRange} label={"Range"} onChange={handleSetUseRange}/>
-                                                <Checkbox value={useComponents} label={"Components"} onChange={handleSetUseComponents}/>
-                                                <Checkbox value={useDuration} label={"Duration"} onChange={handleSetUseDuration}/>
-                                                <Checkbox value={useEntries} label={"Entries"} onChange={handleSetUseEntries}/>
-                                                <Checkbox value={useEntriesHigherLevel} label={"Entries Higher Level"} onChange={handleSetUseEntriesHigherLevel}/>
+                                                <Checkbox value={useLevel} label={"Level"}
+                                                          onChange={handleSetUseLevel}/>
+                                                <Checkbox value={useCastingTime} label={"Casting Time"}
+                                                          onChange={handleSetUseCastingTime}/>
+                                                <Checkbox value={useRange} label={"Range"}
+                                                          onChange={handleSetUseRange}/>
+                                                <Checkbox value={useComponents} label={"Components"}
+                                                          onChange={handleSetUseComponents}/>
+                                                <Checkbox value={useDuration} label={"Duration"}
+                                                          onChange={handleSetUseDuration}/>
+                                                <Checkbox value={useEntries} label={"Entries"}
+                                                          onChange={handleSetUseEntries}/>
+                                                <Checkbox value={useEntriesHigherLevel} label={"Entries Higher Level"}
+                                                          onChange={handleSetUseEntriesHigherLevel}/>
                                             </section>
                                         }
                                         selectors={
@@ -186,11 +240,18 @@ const SpellList = ({spells, removeSpell}) => {
                                         generatePdfName={spell.name.replaceAll(" ", "_")}
                                         icon={faPrint}
                                     />
-                                    <CustomPrimaryButton
+                                    <CustomButton
                                         extraClasses="button-small mr-0-5"
                                         variant="outline-danger"
                                         onClick={() => removeSpell(spell.id)}
                                         text={<FontAwesomeIcon icon={faTrash}/>}
+                                    />
+                                    <Checkbox
+                                        value={checkedSpells.includes(spell.id)}
+                                        extraClasses={"desktop"}
+                                        onChange={() => {
+                                            handleCheckedSpells(spell.id);
+                                        }}
                                     />
                                 </section>
                             </section>

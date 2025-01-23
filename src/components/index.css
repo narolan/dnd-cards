@@ -140,7 +140,7 @@
 }
 
 .checkbox-wrapper .checkbox-input:checked {
-    background-color: #6e79d6;
+    background-color: var(--dnd-red);
 }
 
 .checkbox-wrapper .checkbox-input:checked::after {
@@ -153,5 +153,5 @@
 }
 
 .checkbox-wrapper .checkbox-input:checked:hover {
-    background-color: #535db3;
+    background-color: var(--dnd-red);
 }

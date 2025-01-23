@@ -71,11 +71,11 @@ const MonsterImport = (props) => {
         }
     }
 
-    const handleSetFileterByChallengeRating = (challengeRating) => {
+    const handleSetFilterByChallengeRating = (challengeRating) => {
         setFilterByChallengeRating(challengeRating);
     }
 
-    const handleSetFileterByAC = (AC) => {
+    const handleSetFilterByAC = (AC) => {
         setFilterByAC(AC);
     }
 
@@ -102,7 +102,7 @@ const MonsterImport = (props) => {
                         options={challengeRatings
                             .filter(it => !filterByChallengeRating.includes(it.value))}
                         selected={filterByChallengeRating}
-                        action={handleSetFileterByChallengeRating}
+                        action={handleSetFilterByChallengeRating}
                     />
                     <SelectSearch
                         type="AC"
@@ -111,7 +111,7 @@ const MonsterImport = (props) => {
                         options={armorClasses
                             .filter(it => !filterByAC.includes(it.value))}
                         selected={filterByAC}
-                        action={handleSetFileterByAC}
+                        action={handleSetFilterByAC}
                     />
                 </section>
             </section>
