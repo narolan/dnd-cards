@@ -1,6 +1,8 @@
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
+const HTML_2_CANVAS_OPTIONS = {scale: 2, useCORS: true};
+
 export const generatePDF = async (elementToPrintId, name, count = 1) => {
     if (count > 1) {
         await multiplePagePrint(count, elementToPrintId, name);
@@ -9,12 +11,13 @@ export const generatePDF = async (elementToPrintId, name, count = 1) => {
     }
 };
 
+
 async function singlePagePrint(elementToPrintId, name) {
     const element = document.getElementById(elementToPrintId);
     if (!element) {
         throw new Error(`Element with id ${elementToPrintId} not found`);
     }
-    const canvas = await html2canvas(element, {scale: 2});
+    const canvas = await html2canvas(element, HTML_2_CANVAS_OPTIONS);
     const data = canvas.toDataURL("image/png");
     const pdf = new jsPDF({
         orientation: "portrait",
@@ -43,7 +46,7 @@ async function multiplePagePrint(count, elementToPrintId, name) {
         if (!element) {
             throw new Error(`Element with id ${elementToPrintId + i} not found`);
         }
-        const canvas = await html2canvas(element, {scale: 2});
+        const canvas = await html2canvas(element, HTML_2_CANVAS_OPTIONS);
         const data = canvas.toDataURL("image/png");
 
         let x = 0;
