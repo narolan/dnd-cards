@@ -26,7 +26,7 @@ const MonsterCard = ({monster, backgroundColor, innerBackgroundColor, textColor,
                 {
                     monster.img_url ?
                         <img
-                            src={"https://narolan.github.io/dnd-cards/" + monster.name.replaceAll(" ", "")}
+                            src={"https://api.cors.lol/?url="+monster.img_url}
                             alt={monster.name}
                             style={{
                                 width: "100%",

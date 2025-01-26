@@ -1,7 +1,7 @@
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
-const HTML_2_CANVAS_OPTIONS = {scale: 2, useCORS: true};
+const HTML_2_CANVAS_OPTIONS = { scale: 2, useCORS: true, proxy: "https://cors-anywhere.herokuapp.com/" };
 
 export const generatePDF = async (elementToPrintId, name, count = 1) => {
     if (count > 1) {
