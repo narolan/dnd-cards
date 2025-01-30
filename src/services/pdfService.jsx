@@ -36,6 +36,7 @@ async function multiplePagePrint(count, elementToPrintId, name) {
         format: 'a4',
     });
 
+    let countWiderImages = 0;
     let newPage = false;
     for (let i = 1; i <= count; i++) {
         if (newPage) {
@@ -50,19 +51,27 @@ async function multiplePagePrint(count, elementToPrintId, name) {
         const data = canvas.toDataURL("image/png");
 
         let x = 0;
-        if (i % 5 === 2) {
+        if ((i + countWiderImages) % 5 === 2) {
             x = 40;
         }
-        if (i % 5 === 3) {
+        if ((i + countWiderImages) % 5 === 3) {
             x = 80;
         }
-        if (i % 5 === 4) {
+        if ((i + countWiderImages) % 5 === 4) {
             x = 120;
         }
-        if (i % 5 === 0) {
+        if (i + countWiderImages === 5 && element.clientWidth === 598) {
+            x = 0;
+            pdf.addPage();
+        } else if ((i + countWiderImages) % 5 === 0) {
             x = 160;
             newPage = true;
         }
+
+        if (element.clientWidth === 598) {
+            countWiderImages++;
+        }
+
         pdf.addImage(data, "PNG", x, 0, element.clientWidth / 8, element.clientHeight / 8);
     }
     pdf.save(name + ".pdf");

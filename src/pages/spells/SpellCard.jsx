@@ -49,12 +49,25 @@ const SpellCard = ({spell, school, backgroundColor, innerBackgroundColor, textCo
         return `Level ${spell.level} ${school}`;
     }
 
+    function getEntries() {
+        return spell.entries
+            .map(entry => {
+                if (entry instanceof Object && !!entry.entries) {
+                    return entry.name + ": " + entry.entries.join(' ');
+                } else if (entry instanceof Object && entry.type === 'list') {
+                    return entry.items.join('\r\n');
+                }
+                return entry;
+            })
+            .join(' ');
+    }
+
     return (
         <article
             key={spell.name}
             id={"cardId" + multipleId}
             style={{
-                width: "300px",
+                width: getEntries().length > 1000 ? "600px" : "300px",
                 height: "fit-content",
                 border: "1px solid black",
                 borderRadius: "10px",
@@ -194,16 +207,7 @@ const SpellCard = ({spell, school, backgroundColor, innerBackgroundColor, textCo
                                 overflowWrap: "break-word"
                             }}>
                                 {
-                                    spell.entries
-                                        .map(entry => {
-                                            if (entry instanceof Object && !!entry.entries) {
-                                                return entry.name + ": " + entry.entries.join(' ');
-                                            } else if (entry instanceof Object && entry.type === 'list') {
-                                                return entry.items.join('\r\n');
-                                            }
-                                            return entry;
-                                        })
-                                        .join(' ')
+                                    getEntries()
                                 }
                             </p>
                         </section>
