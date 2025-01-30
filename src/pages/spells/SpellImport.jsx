@@ -83,6 +83,14 @@ const SpellImport = ({spells, setSpells}) => {
                 <h3 style={{textAlign: "center"}}>Filters</h3>
                 <section  className="form-filters">
                     <SelectSearch
+                        type="classes"
+                        isMulti={false}
+                        isSmall={true}
+                        options={classes}
+                        selected={filterByClasses}
+                        action={handleSetFileterByClasses}
+                    />
+                    <SelectSearch
                         type="level"
                         isMulti={true}
                         isSmall={true}
@@ -99,14 +107,6 @@ const SpellImport = ({spells, setSpells}) => {
                             .filter(it => !filterBySchools.includes(it.value))}
                         selected={filterBySchools}
                         action={handleSetFileterBySchools}
-                    />
-                    <SelectSearch
-                        type="classes"
-                        isMulti={false}
-                        isSmall={true}
-                        options={classes}
-                        selected={filterByClasses}
-                        action={handleSetFileterByClasses}
                     />
                 </section>
             </section>

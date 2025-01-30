@@ -114,29 +114,6 @@ const MonsterList = (props) => {
                                             />
                                         </section>
                                     }
-                                    // resetAttributes={resetAttributes}
-                                    // boxSelectors={
-                                    //     <section style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
-                                    //         <Checkbox value={useName} label={"Name"} onChange={handleSetUseName}/>
-                                    //         <Checkbox value={useLevel} label={"Level"}
-                                    //                   onChange={handleSetUseLevel}/>
-                                    //         <Checkbox value={useCastingTime} label={"Casting Time"}
-                                    //                   onChange={handleSetUseCastingTime}/>
-                                    //         <Checkbox value={useRange} label={"Range"}
-                                    //                   onChange={handleSetUseRange}/>
-                                    //         <Checkbox value={useComponents} label={"Components"}
-                                    //                   onChange={handleSetUseComponents}/>
-                                    //         <Checkbox value={useDuration} label={"Duration"}
-                                    //                   onChange={handleSetUseDuration}/>
-                                    //         <Checkbox value={useEntries} label={"Entries"}
-                                    //                   onChange={handleSetUseEntries}/>
-                                    //         <Checkbox value={useEntriesHigherLevel} label={"Entries Higher Level"}
-                                    //                   onChange={handleSetUseEntriesHigherLevel}/>
-                                    //     </section>
-                                    // }
-                                    // selectors={
-                                    //     useName
-                                    // }
                                     titleHtml={getNameOnlyTitleHtml(monster)}
                                     generatePdf={true}
                                     generatePdfName={monster.name.replaceAll(" ", "_")}

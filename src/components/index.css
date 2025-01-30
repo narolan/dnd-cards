@@ -16,7 +16,7 @@
 
 .form-filters {
     display: grid;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr 1fr
 }
 
 @media (max-width: 1000px) {
@@ -24,6 +24,11 @@
     .form--small {
         width: 40vw;
         margin: 0 1rem;
+    }
+
+    .form-filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
