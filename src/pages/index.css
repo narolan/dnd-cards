@@ -50,6 +50,7 @@
 @media (max-width: 1000px) {
     .monsters {
         width: 90vw;
+        max-width: 800px;
         display: grid;
         grid-template-columns: 1fr 1fr 2fr 1fr;
     }
@@ -66,6 +67,7 @@
 .form {
     margin: 0 auto;
     width: 70vw;
+    max-width: 800px;
     text-align: center;
     justify-content: center;
 }

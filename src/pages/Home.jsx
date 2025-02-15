@@ -82,7 +82,7 @@ const Home = () => {
                     onClick={() => getDataAsBase64()}
                     text={"Export"}
                 />
-                <Form style={{ width: '60%', textAlign: "center" }}>
+                <Form style={{ width: '60%', maxWidth: '800px', textAlign: "center" }}>
                     <Form.Group className="mb-3" style={{ textAlign: "left" }} controlId="importData">
                         <Form.Label column="lg">Import</Form.Label>
                         <Form.Control

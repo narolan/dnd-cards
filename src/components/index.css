@@ -6,11 +6,13 @@
 
 .form {
     width: 50vw;
+    max-width: 800px;
     margin: 1rem auto;
 }
 
 .form--small {
     width: 25vw;
+    max-width: 800px;
     margin: 0 1rem;
 }
 
@@ -23,6 +25,7 @@
 
     .form--small {
         width: 40vw;
+        max-width: 800px;
         margin: 0 1rem;
     }
 
@@ -40,18 +43,21 @@
 
     .form--small {
         width: 70vw;
+        max-width: 800px;
         margin: 0 1rem;
     }
 }
 
 .form-read-only {
     width: 80vw;
+    max-width: 800px;
     margin: 1rem auto;
 }
 
 @media (max-width: 1000px) {
     .form {
         width: 90vw;
+        max-width: 800px;
         margin: 1rem auto;
     }
 }
