@@ -18,6 +18,9 @@ const Navbar = () => {
                 <NavLink to="/spells" className="desktop">
                     Spells
                 </NavLink>
+                <NavLink to="/characters" className="desktop">
+                    Characters
+                </NavLink>
                 <NavLink to="/monsters" className="desktop">
                     Monsters
                 </NavLink>
@@ -32,6 +35,7 @@ const Navbar = () => {
                     style={{ color: 'white' }}
                 >
                     <NavDropdown.Item href={BASE_URL + "#/spells"}>Spells</NavDropdown.Item>
+                    <NavDropdown.Item href={BASE_URL + "#/characters"}>Characters</NavDropdown.Item>
                     <NavDropdown.Item href={BASE_URL + "#/monsters"}>Monsters</NavDropdown.Item>
                     <NavDropdown.Divider/>
                     <NavDropdown.Item
