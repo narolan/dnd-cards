@@ -11,11 +11,11 @@ const Navbar = () => {
 
     return (
         <Nav>
-            <NavMenu className="desktop">
+            <NavMenu>
                 <NavLink to="/" className="home">
                     <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
                 </NavLink>
-                <NavLink to="/spells" className="desktop">
+                <NavLink to="/spells">
                     Spells
                 </NavLink>
                 <NavLink to="/characters" className="desktop">
