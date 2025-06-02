@@ -5,6 +5,7 @@ const Varia = () => {
     return (
         <article className="block">
             <section style={{ textAlign: "center", paddingTop: "2rem" }}>
+                <h3>Classes Overview</h3>
                 <p className="text-italic">
                     Here you will find a brief overview of what each class represents.
                     <br/>
