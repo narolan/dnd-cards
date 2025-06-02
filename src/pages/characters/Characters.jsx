@@ -7,7 +7,6 @@ import {faTrash} from "@fortawesome/free-solid-svg-icons";
 
 const Characters = () => {
 
-
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {

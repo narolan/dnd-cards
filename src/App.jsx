@@ -12,6 +12,7 @@ import Looters from "./pages/looters/Looters.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import version from "../package.json";
 import Characters from "./pages/characters/Characters";
+import Varia from "./pages/varia/Varia";
 
 function App() {
     return (
@@ -35,6 +36,10 @@ function App() {
                     <Route
                         path="/characters"
                         element={<Characters/>}
+                    />
+                    <Route
+                        path="/varia"
+                        element={<Varia/>}
                     />
                     <Route
                         path="/looters"

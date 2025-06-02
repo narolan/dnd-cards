@@ -24,7 +24,9 @@ const Navbar = () => {
                 <NavLink to="/monsters" className="desktop">
                     Monsters
                 </NavLink>
-                <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other Apps" id="nav-dropdown">
+                <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other" id="nav-dropdown">
+                    <NavDropdown.Item href={BASE_URL + '#/varia'}>Varia</NavDropdown.Item>
+                    <NavDropdown.Divider/>
                     <NavDropdown.Item href={BASE_URL + "#/looters"}>Looters</NavDropdown.Item>
                 </NavDropdown>
             </NavMenu>
@@ -37,6 +39,8 @@ const Navbar = () => {
                     <NavDropdown.Item href={BASE_URL + "#/spells"}>Spells</NavDropdown.Item>
                     <NavDropdown.Item href={BASE_URL + "#/characters"}>Characters</NavDropdown.Item>
                     <NavDropdown.Item href={BASE_URL + "#/monsters"}>Monsters</NavDropdown.Item>
+                    <NavDropdown.Divider/>
+                    <NavDropdown.Item href={BASE_URL + "#/varia"}>Varia</NavDropdown.Item>
                     <NavDropdown.Divider/>
                     <NavDropdown.Item
                         href="https://smarinade.github.io/looters" target="_blank"
