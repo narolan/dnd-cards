@@ -18,12 +18,6 @@ const Navbar = () => {
                 <NavLink to="/spells" className="desktop">
                     Spells
                 </NavLink>
-                <NavLink to="/characters" className="desktop">
-                    Characters
-                </NavLink>
-                <NavLink to="/monsters" className="desktop">
-                    Monsters
-                </NavLink>
                 <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other Apps" id="nav-dropdown">
                     <NavDropdown.Item href={BASE_URL + "#/looters"}>Looters</NavDropdown.Item>
                 </NavDropdown>
