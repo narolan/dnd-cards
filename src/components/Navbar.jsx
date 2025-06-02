@@ -11,12 +11,18 @@ const Navbar = () => {
 
     return (
         <Nav>
-            <NavMenu>
+            <NavMenu className="desktop">
                 <NavLink to="/" className="home">
                     <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
                 </NavLink>
                 <NavLink to="/spells" className="desktop">
                     Spells
+                </NavLink>
+                <NavLink to="/characters" className="desktop">
+                    Characters
+                </NavLink>
+                <NavLink to="/monsters" className="desktop">
+                    Monsters
                 </NavLink>
                 <NavDropdown className="desktop" style={{color: "white", textDecoration: "none", margin: "auto 1rem"}} title="Other Apps" id="nav-dropdown">
                     <NavDropdown.Item href={BASE_URL + "#/looters"}>Looters</NavDropdown.Item>
@@ -38,7 +44,6 @@ const Navbar = () => {
                         Looters
                     </NavDropdown.Item>
                 </NavDropdown>
-
             </NavMenu>
         </Nav>
     )
