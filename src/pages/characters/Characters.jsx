@@ -44,19 +44,20 @@ const Characters = () => {
 
     return (
         <article className="block">
+            <p className="text-bold text-italic">This page is a work in progress</p>
             {
                 characters.length === 0 ?
-                    <section style={{ textAlign: "center" }}>
+                    <section style={{textAlign: "center"}}>
                         <p className="text-bold">No characters yet!</p>
                         <p className="text-italic">Work In Progress</p>
                         {addCharacterButton()}
                     </section>
                     :
-                    <section style={{ textAlign: "center" }}>
+                    <section style={{textAlign: "center"}}>
                         <p>You've got {characters.length} characters!</p>
                         {characters.map((character, index) => {
                             return (
-                                <section key={index} style={{ marginBottom: ".25rem" }}>
+                                <section key={index} style={{marginBottom: ".25rem"}}>
                                     <span className="text">{character.name}</span>
                                     <CustomButton
                                         extraClasses="button-small mr-0-5"

@@ -4,7 +4,6 @@ import {NavDropdown} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 
-
 const Navbar = () => {
 
     const BASE_URL = import.meta.env.BASE_URL;
