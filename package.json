@@ -1,6 +1,6 @@
 {
   "name": "dnd-cards",
-  "version": "2.10.1",
+  "version": "2.11.0",
   "private": true,
   "homepage": "https://narolan.github.io/dnd-cards",
   "dependencies": {
