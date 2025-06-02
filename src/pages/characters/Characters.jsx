@@ -4,6 +4,7 @@ import CustomButton from "../../components/CustomButton";
 import * as uuid from "uuid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import WipNote from "../../components/WipNote";
 
 const Characters = () => {
 
@@ -44,7 +45,7 @@ const Characters = () => {
 
     return (
         <article className="block">
-            <p className="text-bold text-italic">This page is a work in progress</p>
+            <WipNote/>
             {
                 characters.length === 0 ?
                     <section style={{textAlign: "center"}}>
