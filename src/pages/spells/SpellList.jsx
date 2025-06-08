@@ -47,13 +47,6 @@ const SpellList = ({spells, removeSpell}) => {
     const [useEntries, setUseEntries] = useState(true);
     const [useEntriesHigherLevel, setUseEntriesHigherLevel] = useState(true);
 
-    const handleSetUseName = () => {
-        setUseName(!useName);
-    }
-
-    const handleSetUseLevel = () => {
-        setUseLevel(!useLevel);
-    }
 
     const handleSetUseCastingTime = () => {
         setUseCastingTime(!useCastingTime);
@@ -214,10 +207,7 @@ const SpellList = ({spells, removeSpell}) => {
                                         }
                                         resetAttributes={resetAttributes}
                                         boxSelectors={
-                                            <section style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr"}}>
-                                                <Checkbox value={useName} label={"Name"} onChange={handleSetUseName}/>
-                                                <Checkbox value={useLevel} label={"Level"}
-                                                          onChange={handleSetUseLevel}/>
+                                            <section className="spell--attributes">
                                                 <Checkbox value={useCastingTime} label={"Casting Time"}
                                                           onChange={handleSetUseCastingTime}/>
                                                 <Checkbox value={useRange} label={"Range"}

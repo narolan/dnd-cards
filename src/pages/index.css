@@ -207,9 +207,19 @@
     display: flex;
     border: .5rem solid var(--dnd-red);
 }
+
 .frameBox iframe{
     width: 100%;
     height: calc(100% + 29px);
     margin: 0;
     overflow: hidden;
+}
+
+.spell--attributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+    }
 }
