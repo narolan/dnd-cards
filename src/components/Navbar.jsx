@@ -2,7 +2,12 @@ import React from "react";
 import {Nav, NavLink, NavMenu,} from "./NavbarElements.jsx";
 import {NavDropdown} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faHatWizard,
+    faUser,
+    faDragon,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
 
@@ -10,7 +15,7 @@ const Navbar = () => {
 
     return (
         <Nav>
-            <NavMenu>
+            <NavMenu className="desktop">
                 <NavLink to="/" className="home">
                     <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
                 </NavLink>
@@ -30,10 +35,22 @@ const Navbar = () => {
                 </NavDropdown>
             </NavMenu>
             <NavMenu className="justify-content-end mobile" style={{ marginRight: ".5rem" }}>
+                <NavLink to="/" className="home">
+                    <img src={BASE_URL + "/logo192.png"} alt="logo" width="50" height="50"/>
+                </NavLink>
+                <NavLink to="/spells">
+                    <FontAwesomeIcon style={{color: "white"}} icon={faHatWizard} />
+                </NavLink>
+                <NavLink to="/characters">
+                    <FontAwesomeIcon style={{color: "white"}} icon={faUser}/>
+                </NavLink>
+                <NavLink to="/monsters">
+                    <FontAwesomeIcon style={{color: "white"}} icon={faDragon}/>
+                </NavLink>
                 <NavDropdown
                     title={<FontAwesomeIcon style={{color: "white"}} icon={faBars}/>}
                     id="collasible-nav-dropdown"
-                    style={{ color: 'white' }}
+                    style={{ color: 'white', right: "10px", position: "fixed" }}
                 >
                     <NavDropdown.Item href={BASE_URL + "#/spells"}>Spells</NavDropdown.Item>
                     <NavDropdown.Item href={BASE_URL + "#/characters"}>Characters</NavDropdown.Item>
